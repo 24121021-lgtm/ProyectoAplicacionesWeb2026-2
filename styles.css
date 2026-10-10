@@ -132,7 +132,7 @@ body {
     background-color: transparent;
     transition: background-color 0.3s ease;
 
-    padding: 10px 430px;
+    padding: 10px 350px;
 
     z-index: 1000;
 }
@@ -247,4 +247,175 @@ section {
 section {
     min-height: 100vh;
     padding: 100px 8%;
+}
+
+
+/* =========================
+   BIENVENIDA: COLORES
+   Cambia estos valores para personalizar la sección.
+========================= */
+
+.bienvenida {
+    --crema: #f4eee3;
+    --verde-oscuro: #294536;
+    --verde-suave: #dce3d5;
+    --cafe: #76543b;
+    --texto: #443c32;
+}
+
+
+/* =========================
+   BIENVENIDA: DISTRIBUCIÓN
+========================= */
+
+section.bienvenida {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+
+    min-height: auto;
+    margin-bottom: 28px;
+    padding: 64px 40px;
+
+    background-color: var(--crema);
+    border-top: 4px solid var(--cafe);
+    border-radius: 12px;
+}
+
+.bienvenida-contenido {
+    min-width: 0;
+}
+
+
+/* =========================
+   BIENVENIDA: TEXTOS
+========================= */
+
+.bienvenida-etiqueta {
+    margin-bottom: 12px;
+
+    color: var(--cafe);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.bienvenida-titulo {
+    margin-bottom: 24px;
+
+    color: var(--verde-oscuro);
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: normal;
+    line-height: 1.15;
+}
+
+.bienvenida-titulo span {
+    display: block;
+    color: var(--cafe);
+}
+
+.bienvenida-descripcion,
+.bienvenida-detalle {
+    max-width: 540px;
+    color: var(--texto);
+    line-height: 1.8;
+}
+
+.bienvenida-descripcion {
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.bienvenida-detalle {
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+
+/* =========================
+   BIENVENIDA: BOTÓN
+========================= */
+
+.bienvenida-boton {
+    display: inline-block;
+    padding: 13px 24px;
+
+    background-color: var(--verde-oscuro);
+    border: 1px solid var(--verde-oscuro);
+    border-radius: 6px;
+
+    color: #dec8c8;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease;
+}
+
+.bienvenida-boton:hover {
+    background-color: var(--cafe);
+    border-color: var(--cafe);
+}
+
+.bienvenida-boton:focus-visible {
+    outline: 3px solid var(--cafe);
+    outline-offset: 4px;
+}
+
+
+/* =========================
+   BIENVENIDA: TARJETA DECORATIVA
+========================= */
+
+.bienvenida-tarjeta {
+    min-width: 0;
+    padding: 36px 28px;
+
+    background-color: var(--verde-suave);
+    border: 1px solid #4a752f;
+    border-radius: 80px 80px 12px 12px;
+
+    color: var(--verde-oscuro);
+    text-align: center;
+}
+
+.bienvenida-numero {
+    display: block;
+    margin-bottom: 16px;
+
+    color: var(--cafe);
+    font-family: Georgia, serif;
+    font-size: 76px;
+    line-height: 1;
+}
+
+.bienvenida-tarjeta h3 {
+    margin-bottom: 14px;
+
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.bienvenida-tarjeta p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+
+
+@media (max-width: 700px) {
+    section.bienvenida {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 36px 24px;
+    }
+
+    .bienvenida-tarjeta {
+        padding: 32px 24px;
+    }
 }
