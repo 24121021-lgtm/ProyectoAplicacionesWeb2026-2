@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+article {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   INICIO
+========================= */
+
+.inicio {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("./imagen/salvaje_inicio.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* BARRA DE NAVEGACIÓN */
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    left: 0;
+
+    width: 100%;
+    align-items: center;
+
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    padding: 10px 430px;
+
+    z-index: 1000;
+}
+.navbar.scrolled {
+    background-color: #9bc7a6;
+}
+
+/* SECCIONES */
+
+section {
+    scroll-margin-top: 90px;
+}
+
+
+.logo h2 {
+    color: #d6ad55;
+    font-size: 32px;
+    font-family: Georgia, serif;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+.logo {
+    flex: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+
+    position: relative;
+    top: -30px;
+
+    flex: 2;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 35px;
+}
+
+.nav-links a:hover {
+    color: #d6ad55;
+}
+
+
+/* =========================
+   CONTENIDO DEL INICIO
+========================= */
+
+.contenido-inicio {
+    text-align: center;
+    color: white;
+}
+
+
+.contenido-inicio h1 {
+    font-family: Georgia, serif;
+
+    font-size: 80px;
+
+    margin-bottom: 5px;
+}
+
+
+.contenido-inicio p {
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+.btn-inicio {
+    display: inline-block;
+
+    padding: 16px 25px;
+
+    background-color: #c89d45;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.btn-inicio:hover {
+    background-color: #a97e2d;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+section {
+    min-height: 100vh;
+    padding: 100px 8%;
+}

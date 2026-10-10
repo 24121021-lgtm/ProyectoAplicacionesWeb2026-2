@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvaje | Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header id="inicio" class="inicio">
+
+    <nav class="navbar">
+
+    <div class="logo">
+         <a href="#inicio">
+        <img src="./imagen/salvaje_logo_png.png" alt="Logo Salvaje">
+    </a>
+    </div>
+
+    <div class="nav-links">
+        <a href="#nosotros">NOSOTROS</a>
+        <a href="#menu">MENÚ</a>
+        <a href="#galeria">GALERÍA</a>
+        <a href="#contacto">CONTACTO</a>
+    </div>
+
+</nav>
+
+    <div class="contenido-inicio">
+
+        <h1>Salvaje</h1>
+
+        <p>RESTAURANTE</p>
+
+        <a href="#nosotros" class="btn-inicio">
+            CONOCE NUESTRA HISTORIA
+        </a>
+
+    </div>
+
+</header>
+
+    <main>
+
+        <section id="inicio">
+            <h2>Bienvenidos a Salvaje</h2>
+            <p>Una experiencia gastronómica diferente.</p>
+            <a href="#reservas">Reservar mesa</a>
+        </section>
+
+        <section id="nosotros">
+            <h2>Sobre nosotros</h2>
+            <p>
+                Salvaje es un restaurante creado para ofrecer una experiencia
+                gastronómica especial en un ambiente moderno y acogedor.
+            </p>
+        </section>
+
+        <section id="menu">
+            <h2>Nuestra carta</h2>
+
+            <article>
+                <h3>Platos principales</h3>
+                <p>Aquí colocaremos nuestros principales platos.</p>
+            </article>
+
+            <article>
+                <h3>Bebidas</h3>
+                <p>Aquí colocaremos las bebidas disponibles.</p>
+            </article>
+        </section>
+
+        <section id="reservas">
+            <h2>Reserva tu mesa</h2>
+            <p>Muy pronto podrás realizar tu reserva desde esta página.</p>
+        </section>
+
+    </main>
+
+    <footer id="contacto">
+        <h2>Contacto</h2>
+        <p>Teléfono: +51 999 999 999</p>
+        <p>Correo: contacto@salvaje.com</p>
+        <p>&copy; 2026 Restaurante Salvaje</p>
+    </footer>
+<script>
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+</body>
+
+</html>
