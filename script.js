@@ -60,103 +60,116 @@
    * Para agregar opciones a un plato, añade objetos al arreglo options.
    */
   const menuProducts = [
-    {
-      name: "Spaghetti",
-      category: "Pastas",
-      description: "Elige el corte de carne brasilera para acompañar tu pasta.",
-      price: "",
-      optionsTitle: "Elige tu acompañamiento",
-      options: []
-    },
-    {
-      name: "Fetuccini",
-      category: "Pastas",
-      description: "Elige el corte de carne brasilera para acompañar tu pasta.",
-      price: "",
-      optionsTitle: "Elige tu acompañamiento",
-      options: []
-    },
-    {
-      name: "Sopas",
-      category: "Sopas",
-      description: "Selecciona para ver los platos de sopa disponibles.",
-      price: "",
-      optionsTitle: "Platos de sopa",
-      options: [
-        { name: "Sopa de la casa", description: "Reemplaza por el nombre y la descripción de la sopa real.", price: "Precio por confirmar" },
-        { name: "Otra sopa", description: "Agrega aquí otra sopa que figure en la carta.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Ensaladas",
-      category: "Ensaladas",
-      description: "Consulta las ensaladas disponibles.",
-      price: "",
-      optionsTitle: "Ensaladas disponibles",
-      options: [
-        { name: "Ensalada de la casa", description: "Reemplaza por los ingredientes reales.", price: "Precio por confirmar" },
-        { name: "Otra ensalada", description: "Agrega aquí otra ensalada del restaurante.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Piqueos",
-      category: "Piqueos",
-      description: "Selecciona para consultar los piqueos disponibles.",
-      price: "",
-      optionsTitle: "Piqueos disponibles",
-      options: [
-        { name: "Piqueo de la casa", description: "Reemplaza por el contenido real del piqueo.", price: "Precio por confirmar" },
-        { name: "Piqueo para compartir", description: "Agrega aquí otra opción de piqueo.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Platos de casa",
-      category: "Platos de casa",
-      description: "Explora los platos propios de Salvaje Restobar.",
-      price: "",
-      optionsTitle: "Platos de casa",
-      options: [
-        { name: "Especialidad de la casa", description: "Reemplaza por el nombre y descripción del plato real.", price: "Precio por confirmar" },
-        { name: "Otro plato de casa", description: "Agrega aquí otra especialidad.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Carnes",
-      category: "Carnes",
-      description: "Elige tu corte brasilero o una combinación parrillera.",
-      price: "",
-      optionsTitle: "Cortes y combinaciones parrilleras",
-      options: [
-        { name: "Churrasco brasilero", description: "Corte de carne a la parrilla.", price: "Precio por confirmar" },
-        { name: "Asado de Tira brasilero", description: "Asado de tira preparado a la parrilla.", price: "Precio por confirmar" },
-        { name: "Lomo fino brasilero", description: "Lomo fino preparado a la parrilla.", price: "Precio por confirmar" },
-        { name: "Bife brasilero", description: "Bife preparado a la parrilla.", price: "Precio por confirmar" },
-        { name: "Picaña brasilero", description: "Picaña preparada a la parrilla.", price: "Precio por confirmar" },
-        { name: "Dúo parrillero", description: "Combinación de dos cortes de carne. Confirma los cortes incluidos.", price: "Precio por confirmar" },
-        { name: "Trío parrillero", description: "Combinación de tres cortes de carne. Confirma los cortes incluidos.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Alitas",
-      category: "Alitas",
-      description: "Elige la presentación que prefieras.",
-      price: "",
-      optionsTitle: "Presentaciones",
-      options: [
-        { name: "6 unidades", description: "Porción de 6 alitas.", price: "Precio por confirmar" },
-        { name: "10 unidades", description: "Porción de 10 alitas.", price: "Precio por confirmar" }
-      ]
-    },
-    {
-      name: "Filete de pollo",
-      category: "Pollo",
-      description: "Consulta las presentaciones y acompañamientos del filete de pollo.",
-      price: "",
-      optionsTitle: "Opciones de filete de pollo",
-      options: [
-        { name: "Filete de pollo", description: "Agrega aquí la descripción y los acompañamientos reales.", price: "Precio por confirmar" }
-      ]
-    }
+    // PASTAS: las tres salsas de la carta se pueden elegir para cada pasta.
+    { name: "Spaghetti", category: "Pastas", description: "Elige salsa al pesto, Alfredo o huancaína y el acompañamiento de tu preferencia.", optionsTitle: "Acompañamientos y precios", options: [
+      { name: "Con chuleta de cerdo", description: "Spaghetti con salsa a elección.", price: "S/ 35" },
+      { name: "Con pechuga a la parrilla", description: "Spaghetti con salsa a elección.", price: "S/ 32" },
+      { name: "Con corazón de res", description: "Spaghetti con salsa a elección.", price: "S/ 34" },
+      { name: "Con churrasco a la parrilla", description: "Spaghetti con salsa a elección.", price: "S/ 39" },
+      { name: "Con bife a la parrilla", description: "Spaghetti con salsa a elección.", price: "S/ 49" },
+      { name: "Con lomo al jugo", description: "Spaghetti con salsa a elección.", price: "S/ 49" },
+      { name: "Con lomo fino", description: "Spaghetti con salsa a elección.", price: "S/ 54" },
+      { name: "Con picaña", description: "Spaghetti con salsa a elección.", price: "S/ 65" }
+    ]},
+    { name: "Fetuccini", category: "Pastas", description: "Elige salsa al pesto, Alfredo o huancaína y el acompañamiento de tu preferencia.", optionsTitle: "Acompañamientos y precios", options: [
+      { name: "Con chuleta de cerdo", description: "Fetuccini con salsa a elección.", price: "S/ 35" },
+      { name: "Con pechuga a la parrilla", description: "Fetuccini con salsa a elección.", price: "S/ 32" },
+      { name: "Con corazón de res", description: "Fetuccini con salsa a elección.", price: "S/ 34" },
+      { name: "Con churrasco a la parrilla", description: "Fetuccini con salsa a elección.", price: "S/ 39" },
+      { name: "Con bife a la parrilla", description: "Fetuccini con salsa a elección.", price: "S/ 49" },
+      { name: "Con lomo al jugo", description: "Fetuccini con salsa a elección.", price: "S/ 49" },
+      { name: "Con lomo fino", description: "Fetuccini con salsa a elección.", price: "S/ 54" },
+      { name: "Con picaña", description: "Fetuccini con salsa a elección.", price: "S/ 65" }
+    ]},
+    // CORTES DE RES
+    { name: "Churrasco 300 g", category: "Cortes de res", description: "Churrasco a la parrilla.", price: "S/ 35" },
+    { name: "Asado de tira 300 g", category: "Cortes de res", description: "Asado de tira a la parrilla.", price: "S/ 35" },
+    { name: "Bife brasilera 300 g", category: "Cortes de res", description: "Bife a la parrilla.", price: "S/ 48" },
+    { name: "Lomo fino 300 g", category: "Cortes de res", description: "Lomo fino a la parrilla.", price: "S/ 48" },
+    { name: "Picaña brasilera 300 g", category: "Cortes de res", description: "Picaña a la parrilla.", price: "S/ 65" },
+    { name: "Tomahawk 500 g", category: "Cortes de res", description: "Corte tomahawk a la parrilla.", price: "S/ 68" },
+    { name: "Dúo parrillero", category: "Cortes de res", description: "200 g de bife + 200 g de picaña.", price: "S/ 90" },
+    { name: "Trío parrillero", category: "Cortes de res", description: "200 g de bife + 200 g de picaña + 200 g de lomo fino.", price: "S/ 120" },
+    // BROCHETAS
+    { name: "Anticucho de corazón", category: "Brochetas", description: "2 palitos de corazón, papas fritas, queso, choclo y ensalada.", price: "S/ 29" },
+    { name: "Brocheta de pollo", category: "Brochetas", description: "2 palitos de pechuga de pollo, papa frita, queso, choclo y ensalada.", price: "S/ 28" },
+    { name: "Brocheta de lomo", category: "Brochetas", description: "2 palitos con trozo de lomo fino, papa frita, queso, choclo y ensalada.", price: "S/ 37" },
+    { name: "Brocheta mixta", category: "Brochetas", description: "1 brocheta de lomo fino + 1 de pollo + 1 anticucho de corazón, papas fritas, queso, choclo y ensalada.", price: "S/ 45" },
+    { name: "Champiñones a la parrilla", category: "Brochetas", description: "Champiñones, papa frita y ensalada.", price: "S/ 28" },
+    { name: "Mollejas a la parrilla", category: "Brochetas", description: "Papa dorada, queso y ensalada.", price: "S/ 23" },
+    { name: "Brochetas especial", category: "Brochetas", description: "4 brochetas a escoger + mollejitas + papas fritas y salsas al gusto.", price: "S/ 59" },
+    // PIQUEOS
+    { name: "Salchipapa clásica", category: "Piqueos", description: "Salchicha frankfurter en trozos acompañada con papas fritas.", price: "S/ 19" },
+    { name: "Salchipapa especial", category: "Piqueos", description: "Salchicha frankfurter en trozos, generosa porción de papas fritas y dos huevos.", price: "S/ 26" },
+    { name: "Salchipapa regional", category: "Piqueos", description: "Salchicha frankfurter en trozos con cecina, papas fritas, huevo y plátano maduro.", price: "S/ 29" },
+    { name: "Chicharrón de pollo", category: "Piqueos", description: "Filete de pechuga en trozos, rebozado con harina y el ingrediente especial de la casa; acompañado de papas fritas.", price: "S/ 26" },
+    { name: "Tequeños clásicos (10 unidades)", category: "Piqueos", description: "Rellenos de queso y jamón, acompañados con salsa de guacamole.", price: "S/ 18" },
+    { name: "Tequeños regionales (10 unidades)", category: "Piqueos", description: "Rellenos de cecina y calabresa, acompañados con salsa de guacamole.", price: "S/ 20" },
+    { name: "Canastas amazónicas", category: "Piqueos", description: "4 patacones rellenos de cecina y calabresa, acompañados de salsa de cocona.", price: "S/ 17" },
+    { name: "Canastas con lomo al jugo", category: "Piqueos", description: "4 patacones con lomito al jugo acompañados de salsa de cocona.", price: "S/ 29" },
+    { name: "Chorizo parrillero", category: "Piqueos", description: "Chorizo a la parrilla.", price: "Consultar" },
+    // PLATOS AMAZÓNICOS SALVAJE
+    { name: "Toscana parrillero", category: "Platos amazónicos", description: "Plato de la casa.", price: "S/ 25" },
+    { name: "Pollo canga", category: "Platos amazónicos", description: "Especialidad amazónica de pollo.", price: "S/ 26" },
+    { name: "Tacacho con cecina", category: "Platos amazónicos", description: "Tacacho acompañado con cecina.", price: "S/ 25" },
+    { name: "Tacacho con cecina + chorizo", category: "Platos amazónicos", description: "Tacacho con cecina y chorizo.", price: "S/ 29" },
+    { name: "Chaufa amazónico", category: "Platos amazónicos", description: "Arroz chaufa al estilo amazónico.", price: "S/ 34" },
+    { name: "Plato amazónico (nombre no legible en foto)", category: "Platos amazónicos", description: "El nombre aparece cubierto en la fotografía.", price: "S/ 35" },
+    { name: "Plato amazónico (nombre no legible en foto) 2", category: "Platos amazónicos", description: "El nombre aparece cubierto en la fotografía.", price: "S/ 35" },
+    { name: "Paco frito", category: "Platos amazónicos", description: "Paco frito.", price: "S/ 35" },
+    { name: "Saltado de cecina", category: "Platos amazónicos", description: "Saltado preparado con cecina.", price: "S/ 39" },
+    { name: "Ronda amazónica", category: "Platos amazónicos", description: "Cecina, chancho, chaufa amazónico, tacacho y chorizo regional.", price: "S/ 50" },
+    // SOPAS
+    { name: "Sopa de dieta", category: "Sopas", description: "Sopa de dieta.", price: "S/ 18" },
+    { name: "Sopa a la minuta", category: "Sopas", description: "Sopa a la minuta.", price: "S/ 19" },
+    { name: "Sopa criolla", category: "Sopas", description: "Sopa criolla.", price: "S/ 20" },
+    // ENSALADAS
+    { name: "Ensalada fresca", category: "Ensaladas", description: "Lechuga orgánica, tomate, pepino, brócoli, zanahoria, palta y rabanito.", price: "S/ 15" },
+    { name: "Ensalada especial", category: "Ensaladas", description: "Lechuga orgánica, tomate, zanahoria cocida, brócoli, champiñones, aceituna, palta y huevo duro.", price: "S/ 19" },
+    { name: "Ensalada César", category: "Ensaladas", description: "Lechuga orgánica, tomates, queso parmesano, crutones, huevo duro y pechuga de pollo.", price: "S/ 27" },
+    { name: "Ensalada Salvaje", category: "Ensaladas", description: "Lechuga orgánica, tomate, palta, queso, palmito, cecina y jamón.", price: "S/ 29" },
+    { name: "Ensalada de casa", category: "Ensaladas", description: "Lechuga orgánica, tomates, cebolla blanca, brócoli, palta, queso edam y pechuga a la plancha.", price: "S/ 29" },
+    // PARRILLAS
+    { name: "Parrilla personal", category: "Parrillas", description: "Bife brasilera 200 g + filete de pollo + 1 palo de anticucho + toscana + vaso de refresco.", price: "S/ 60" },
+    { name: "Parrilla mediana", category: "Parrillas", description: "Bife brasilera 200 g + filete de pollo + chuleta de cerdo + 1 palo de anticucho + 2 chorizos + 1 jarra de sangría.", price: "S/ 140" },
+    { name: "Parrilla familiar", category: "Parrillas", description: "Bife brasilera 200 g + picaña 200 g + lomo fino 200 g + 2 filetes de pollo + 1 chuleta de cerdo + 2 palos de anticuchos + 2 chorizos + 1 jarra de sangría.", price: "S/ 220" },
+    { name: "Parrilla Salvaje", category: "Parrillas", description: "2 bife brasilera 200 g + picaña 300 g + 2 lomos finos + 2 filetes de pollo + 2 chuletas de cerdo + 2 anticuchos + 2 chorizos de la casa + porción de molleja + 1 jarra de sangría.", price: "S/ 300" },
+    // GUARNICIONES
+    { name: "Arroz", category: "Guarniciones", description: "Porción de arroz.", price: "S/ 7" },
+    { name: "Papas fritas", category: "Guarniciones", description: "Porción de papas fritas.", price: "S/ 10" },
+    { name: "Patacones", category: "Guarniciones", description: "Porción de patacones.", price: "S/ 10" },
+    { name: "Papa dorada", category: "Guarniciones", description: "Porción de papa dorada.", price: "S/ 10" },
+    { name: "Yucas fritas", category: "Guarniciones", description: "Porción de yucas fritas.", price: "S/ 10" },
+    { name: "Tacacho", category: "Guarniciones", description: "Porción de tacacho.", price: "S/ 10" },
+    // RECOMENDACIONES DE LA CASA
+    { name: "Filet mignon en salsa de champiñones", category: "Recomendaciones de la casa", description: "Filet mignon con salsa de champiñones.", price: "S/ 53" },
+    { name: "Pechuga en salsa de champiñones", category: "Recomendaciones de la casa", description: "Pechuga de pollo con salsa de champiñones.", price: "S/ 33" },
+    { name: "Pechuga Salvaje regional", category: "Recomendaciones de la casa", description: "Pechuga estilo Salvaje regional.", price: "S/ 39" },
+    // COCINA
+    { name: "Lomo saltado", category: "Nuestra cocina", description: "Lomo saltado.", price: "S/ 35" },
+    { name: "Lomo saltado a lo pobre", category: "Nuestra cocina", description: "Lomo saltado a lo pobre.", price: "S/ 38" },
+    { name: "Tallarín saltado lomo fino", category: "Nuestra cocina", description: "Tallarín saltado con lomo fino.", price: "S/ 37" },
+    { name: "Tallarín saltado pollo", category: "Nuestra cocina", description: "Tallarín saltado con pollo.", price: "S/ 32" },
+    { name: "Chaufa de pollo", category: "Nuestra cocina", description: "Arroz chaufa de pollo.", price: "S/ 24" },
+    { name: "Chaufa especial", category: "Nuestra cocina", description: "Arroz chaufa especial.", price: "S/ 33" },
+    { name: "Saltado de pollo", category: "Nuestra cocina", description: "Saltado de pollo.", price: "S/ 29" },
+    { name: "Arroz con pato", category: "Nuestra cocina", description: "Arroz con pato.", price: "Consultar" },
+    // CERDO Y PECHUGAS
+    { name: "Chuleta a la parrilla 300 g", category: "Cerdo", description: "Chuleta de cerdo a la parrilla.", price: "S/ 35" },
+    { name: "Costillas ahumadas BBQ", category: "Cerdo", description: "Costillas ahumadas con sabor de casa (BBQ).", price: "S/ 43" },
+    { name: "Caja china", category: "Cerdo", description: "Preparación al estilo caja china.", price: "S/ 35" },
+    { name: "Filete de pechuga", category: "Pechugas", description: "Filete de pechuga con papas fritas y ensalada.", price: "S/ 24" },
+    { name: "Filete light", category: "Pechugas", description: "Filete de pechuga con ensalada especial.", price: "S/ 27" },
+    { name: "Filete a lo pobre", category: "Pechugas", description: "Filete de pechuga + papas fritas + arroz + plátano + huevo frito.", price: "S/ 29" },
+    { name: "Filete parrillero", category: "Pechugas", description: "Filete de pechuga + mollejitas + chorizo + papas fritas + ensalada.", price: "S/ 32" },
+    { name: "Filete Salvaje", category: "Pechugas", description: "Filete de pechuga + queso + tocino + champiñones + jamón.", price: "S/ 34" },
+    // ALITAS
+    { name: "Alitas - 6 unidades", category: "Alitas", description: "Acompañadas con una salsa a elección: BBQ, acevichado, búfalo, anticuchera, Salvaje o maracuyá.", price: "S/ 25" },
+    { name: "Alitas - 10 unidades", category: "Alitas", description: "Acompañadas con una salsa a elección: BBQ, acevichado, búfalo, anticuchera, Salvaje o maracuyá.", price: "S/ 35" },
+    // TACU-TACU: la foto no muestra los precios con suficiente claridad.
+    { name: "Tacu tacu con lomo saltado", category: "Tacu-tacu", description: "Tacu tacu con lomo saltado.", price: "Consultar" },
+    { name: "Tacu tacu con pollo saltado", category: "Tacu-tacu", description: "Tacu tacu con pollo saltado.", price: "Consultar" },
+    { name: "Tacu tacu a lo pobre", category: "Tacu-tacu", description: "Tacu tacu a lo pobre.", price: "Consultar" }
   ];
 
   const pastaSauces = [
@@ -164,7 +177,16 @@
     { name: "A lo Alfredo", description: "Salsa cremosa estilo Alfredo.", image: "imagen/salsa_alfredo.jpg" },
     { name: "Huancaína", description: "Salsa cremosa de ají amarillo.", image: "imagen/salsa_huancaina.jpg" }
   ];
-  const meatCuts = ["Churrasco brasilero", "Asado de Tira brasilero", "Lomo fino brasilero", "Bife brasilero", "Picaña brasilero"];
+  const meatCuts = [
+    { name: "Chuleta de cerdo", price: "S/ 35" },
+    { name: "Pechuga a la parrilla", price: "S/ 32" },
+    { name: "Corazón de res", price: "S/ 34" },
+    { name: "Churrasco a la parrilla", price: "S/ 39" },
+    { name: "Bife a la parrilla", price: "S/ 49" },
+    { name: "Lomo al jugo", price: "S/ 49" },
+    { name: "Lomo fino", price: "S/ 54" },
+    { name: "Picaña", price: "S/ 65" }
+  ];
   const donenessLevels = [
     { name: "Rojo inglés", description: "Centro rojo y muy jugoso.", image: "imagen/termino_rojo_ingles.jpg" },
     { name: "Rojo medio", description: "Centro rojo, ligeramente más cocido.", image: "imagen/termino_rojo_medio.jpg" },
@@ -282,7 +304,7 @@
             <h4>2. Elige tu carne</h4>
             <p class="choice-hint">Puedes acompañar tu pasta con cualquiera de estos cortes.</p>
             <div class="cut-choice-grid">
-              ${meatCuts.map((name) => `<button type="button" class="cut-choice" data-choice-group="carne" data-choice="${escapeHTML(name)}" aria-pressed="false">${escapeHTML(name)}<span>Precio por confirmar</span></button>`).join("")}
+              ${meatCuts.map((item) => `<button type="button" class="cut-choice" data-choice-group="carne" data-choice="${escapeHTML(item.name)}" aria-pressed="false">${escapeHTML(item.name)}<span>${escapeHTML(item.price)}</span></button>`).join("")}
             </div>
           </section>
           <p class="selection-note" aria-live="polite">Elige una salsa y un corte para personalizar tu pasta.</p>`;
@@ -313,7 +335,7 @@
       if (note) {
         const selected = [...productDetail.querySelectorAll('[data-choice-group][aria-pressed="true"]')]
           .map((item) => `${item.dataset.choiceGroup === "salsa" ? "Salsa" : item.dataset.choiceGroup === "carne" ? "Carne" : "Término"}: ${item.dataset.choice}`);
-        note.textContent = selected.length ? `Tu selección: ${selected.join(" · ")}. Los precios se confirmarán en la carta final.` : "Puedes seleccionar tus preferencias nuevamente.";
+        note.textContent = selected.length ? `Tu selección: ${selected.join(" · ")}. Los precios indicados corresponden a la carta fotografiada.` : "Puedes seleccionar tus preferencias nuevamente.";
       }
     });
 
