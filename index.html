@@ -8,7 +8,6 @@
   <title>Salvaje Restobar | Sabores que conectan con la naturaleza</title>
   <link rel="preload" as="image" href="./imagen/salvaje_inicio.jpg">
   <link rel="stylesheet" href="./styles.css">
-  <script src="./script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -19,10 +18,8 @@
         <img src="./imagen/salvaje_logo_png.png" alt="Salvaje Restobar">
       </a>
 
-      <button class="menu-toggle" type="button" aria-expanded="false"
-              aria-controls="nav-links" aria-label="Abrir menú de navegación">
-        <span></span><span></span><span></span>
-      </button>
+      <input class="nav-checkbox" type="checkbox" id="nav-checkbox" aria-label="Abrir menú de navegación">
+      <label class="menu-toggle" for="nav-checkbox" aria-hidden="true"><span></span><span></span><span></span></label>
 
       <div class="nav-links" id="nav-links">
         <a href="#nosotros">Nosotros</a>
@@ -126,46 +123,106 @@
       <div class="section-shell">
         <div class="section-heading section-heading-light">
           <p class="eyebrow eyebrow-light">Nuestra propuesta</p>
-          <h2>Arma tu experiencia <em>Salvaje.</em></h2>
-          <p>Elige una categoría y después selecciona el plato para ver sus opciones.</p>
+          <h2>Descubre la carta <em>Salvaje.</em></h2>
+          <p>Explora nuestras especialidades, consulta los precios y elige tu plato favorito.</p>
         </div>
 
-        <div class="menu-tools">
-          <label class="menu-search-label" for="menu-search">Buscar en la carta</label>
-          <input id="menu-search" class="menu-search" type="search"
-                 placeholder="Ej.: spaghetti, lomo, sopa..." autocomplete="off">
+        <div class="static-menu-categories">
+          <details class="menu-category-panel" open>
+            <summary>Pastas <span>Spaghetti · Fetuccini</span></summary>
+            <div class="pasta-types">
+              <details class="pasta-type" open>
+                <summary><span>Spaghetti</span><small>Al pesto, a lo Alfredo o a la huancaína</small></summary>
+                <div class="static-product-grid">
+                  <article class="static-product"><h4>Con chuleta de cerdo</h4><p>Spaghetti acompañado con chuleta de cerdo.</p><strong>S/ 35</strong></article>
+                  <article class="static-product"><h4>Con pechuga a la parrilla</h4><p>Spaghetti acompañado con pechuga a la parrilla.</p><strong>S/ 32</strong></article>
+                  <article class="static-product"><h4>Con corazón de res</h4><p>Spaghetti acompañado con corazón de res.</p><strong>S/ 34</strong></article>
+                  <article class="static-product"><h4>Con churrasco a la parrilla</h4><p>Spaghetti acompañado con churrasco a la parrilla.</p><strong>S/ 39</strong></article>
+                  <article class="static-product"><h4>Con bife a la parrilla</h4><p>Spaghetti acompañado con bife a la parrilla.</p><strong>S/ 49</strong></article>
+                  <article class="static-product"><h4>Con lomo al jugo</h4><p>Spaghetti acompañado con lomo al jugo.</p><strong>S/ 49</strong></article>
+                  <article class="static-product"><h4>Con lomo fino</h4><p>Spaghetti acompañado con lomo fino.</p><strong>S/ 54</strong></article>
+                  <article class="static-product"><h4>Con picaña</h4><p>Spaghetti acompañado con picaña.</p><strong>S/ 65</strong></article>
+                </div>
+              </details>
+              <details class="pasta-type">
+                <summary><span>Fetuccini</span><small>Al pesto, a lo Alfredo o a la huancaína</small></summary>
+                <div class="static-product-grid">
+                  <article class="static-product"><h4>Con chuleta de cerdo</h4><p>Fetuccini acompañado con chuleta de cerdo.</p><strong>S/ 35</strong></article>
+                  <article class="static-product"><h4>Con pechuga a la parrilla</h4><p>Fetuccini acompañado con pechuga a la parrilla.</p><strong>S/ 32</strong></article>
+                  <article class="static-product"><h4>Con corazón de res</h4><p>Fetuccini acompañado con corazón de res.</p><strong>S/ 34</strong></article>
+                  <article class="static-product"><h4>Con churrasco a la parrilla</h4><p>Fetuccini acompañado con churrasco a la parrilla.</p><strong>S/ 39</strong></article>
+                  <article class="static-product"><h4>Con bife a la parrilla</h4><p>Fetuccini acompañado con bife a la parrilla.</p><strong>S/ 49</strong></article>
+                  <article class="static-product"><h4>Con lomo al jugo</h4><p>Fetuccini acompañado con lomo al jugo.</p><strong>S/ 49</strong></article>
+                  <article class="static-product"><h4>Con lomo fino</h4><p>Fetuccini acompañado con lomo fino.</p><strong>S/ 54</strong></article>
+                  <article class="static-product"><h4>Con picaña</h4><p>Fetuccini acompañado con picaña.</p><strong>S/ 65</strong></article>
+                </div>
+              </details>
+            </div>
+            <div class="sauce-section">
+              <h3>Elige tu tipo de salsa</h3>
+              <div class="sauce-grid">
+                <article class="sauce-card sauce-pesto"><img src="imagen/salsa_pesto.jpg" alt="Salsa pesto verde con albahaca" class="sauce-photo"><h4>Al pesto</h4><p>Salsa verde de albahaca, ajo, piñones, queso parmesano y aceite de oliva.</p></article>
+                <article class="sauce-card sauce-alfredo"><img src="imagen/salsa_alfredo.jpg" alt="Salsa Alfredo cremosa" class="sauce-photo"><h4>A lo Alfredo</h4><p>Salsa cremosa a base de mantequilla, crema de leche y queso parmesano.</p></article>
+                <article class="sauce-card sauce-huancaina"><img src="imagen/salsa_huancaina.jpg" alt="Salsa huancaína amarilla" class="sauce-photo"><h4>A la huancaína</h4><p>Salsa peruana tradicional a base de ají amarillo y queso.</p></article>
+              </div>
+            </div>
+          </details>
+
+          <details class="menu-category-panel">
+            <summary>Carnes <span>Cortes a la parrilla</span></summary>
+            <p class="meat-intro">Elige tu corte favorito y el término de cocción que prefieras. Los tiempos pueden variar según el grosor de la carne.</p>
+            <div class="static-product-grid">
+              <article class="static-product featured-product"><h4>Churrasco 300 g</h4><p>Corte sabroso y jugoso, sellado a las brasas para lograr un exterior dorado y un interior tierno.</p><strong>S/ 35</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> exterior sellado y centro rojo, muy jugoso.</li><li><b>Medio:</b> centro rosado, suave y jugoso.</li><li><b>Tres cuartos:</b> centro ligeramente rosado y textura más firme.</li><li><b>Bien cocido:</b> cocción completa, sin centro rosado.</li></ul></details></article>
+              <article class="static-product"><h4>Asado de tira 300 g</h4><p>Corte con hueso y vetas de grasa que aportan sabor intenso; ideal para una cocción lenta a la parrilla.</p><strong>S/ 35</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> centro rojo y muy jugoso; no suele ser la opción más indicada para este corte.</li><li><b>Medio:</b> centro rosado y jugoso.</li><li><b>Tres cuartos:</b> carne más firme y grasa bien fundida.</li><li><b>Bien cocido:</b> cocción completa; se recomienda controlar el tiempo para evitar que se reseque.</li></ul></details></article>
+              <article class="static-product"><h4>Bife brasilero 300 g</h4><p>Corte de res de sabor marcado y buena jugosidad, perfecto para disfrutar el sabor de la parrilla.</p><strong>S/ 48</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> exterior dorado y centro rojo.</li><li><b>Medio:</b> centro rosado, tierno y jugoso.</li><li><b>Tres cuartos:</b> centro apenas rosado, textura firme.</li><li><b>Bien cocido:</b> cocción completa y centro sin tonos rosados.</li></ul></details></article>
+              <article class="static-product"><h4>Lomo fino 300 g</h4><p>Corte magro, delicado y muy tierno, de textura fina y sabor suave.</p><strong>S/ 48</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> centro rojo y máxima jugosidad.</li><li><b>Medio:</b> centro rosado, tierno y jugoso.</li><li><b>Tres cuartos:</b> ligeramente rosado al centro y más firme.</li><li><b>Bien cocido:</b> cocción completa; puede resultar menos jugoso.</li></ul></details></article>
+              <article class="static-product"><h4>Picaña brasilera 300 g</h4><p>Corte con una característica capa de grasa que se dora en la parrilla y realza su sabor.</p><strong>S/ 65</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> centro rojo y jugoso, con exterior bien sellado.</li><li><b>Medio:</b> centro rosado y grasa dorada.</li><li><b>Tres cuartos:</b> carne más firme y grasa bien cocida.</li><li><b>Bien cocido:</b> cocción completa, con menor jugosidad.</li></ul></details></article>
+              <article class="static-product"><h4>Tomahawk 500 g</h4><p>Corte grueso con hueso largo, ideal para la parrilla y para quienes disfrutan una presentación especial.</p><strong>S/ 68</strong><details class="cooking-details"><summary>Términos de cocción y descripción</summary><ul><li><b>Sellado / inglés:</b> centro rojo; requiere controlar cuidadosamente la cocción por su grosor.</li><li><b>Medio:</b> centro rosado y jugoso.</li><li><b>Tres cuartos:</b> centro apenas rosado y textura firme.</li><li><b>Bien cocido:</b> cocción completa hasta el centro.</li></ul></details></article>
+              <article class="static-product"><h4>Dúo parrillero</h4><p>Combinación de 200 g de bife y 200 g de picaña para disfrutar dos cortes diferentes.</p><strong>S/ 90</strong></article>
+              <article class="static-product"><h4>Trío parrillero</h4><p>Combinación de 200 g de bife, 200 g de picaña y 200 g de lomo fino.</p><strong>S/ 120</strong></article>
+              <article class="static-product"><h4>Chuleta a la parrilla 300 g</h4><p>Chuleta de cerdo dorada a las brasas. Se recomienda cocinarla completamente hasta alcanzar una temperatura interna segura.</p><strong>S/ 35</strong><details class="cooking-details"><summary>Sobre su cocción</summary><ul><li><b>Bien cocida:</b> cerdo cocinado completamente; el centro debe alcanzar una temperatura interna segura.</li></ul></details></article>
+              <article class="static-product"><h4>Costillas ahumadas BBQ</h4><p>Costillas de cerdo con sabor ahumado y salsa BBQ, cocinadas hasta quedar tiernas.</p><strong>S/ 43</strong><details class="cooking-details"><summary>Sobre su cocción</summary><ul><li><b>Tiernas y bien cocidas:</b> cocción prolongada para ablandar la carne y facilitar que se desprenda del hueso.</li></ul></details></article>
+            </div>
+          </details>
+          <details class="menu-category-panel"><summary>Brochetas <span>Especialidades a la parrilla</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Anticucho de corazón</h4><p>Dos palitos de corazón, papas fritas, queso, choclo y ensalada.</p><strong>S/ 29</strong></article>
+            <article class="static-product"><h4>Brocheta de pollo</h4><p>Dos palitos de pechuga de pollo, papa frita, queso, choclo y ensalada.</p><strong>S/ 28</strong></article>
+            <article class="static-product"><h4>Brocheta de lomo</h4><p>Dos palitos con trozos de lomo fino, papa frita, queso, choclo y ensalada.</p><strong>S/ 37</strong></article>
+            <article class="static-product"><h4>Brocheta mixta</h4><p>Lomo fino, pollo y anticucho de corazón con guarniciones.</p><strong>S/ 45</strong></article>
+            <article class="static-product"><h4>Champiñones a la parrilla</h4><p>Champiñones, papa frita y ensalada.</p><strong>S/ 28</strong></article>
+            <article class="static-product"><h4>Mollejas a la parrilla</h4><p>Papa dorada, queso y ensalada.</p><strong>S/ 23</strong></article>
+            <article class="static-product"><h4>Especial</h4><p>Cuatro brochetas a escoger, mollejitas, papas fritas y salsas al gusto.</p><strong>S/ 59</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Sopas <span>Calientitas y tradicionales</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Sopa de dieta</h4><strong>S/ 18</strong></article><article class="static-product"><h4>Sopa a la minuta</h4><strong>S/ 19</strong></article><article class="static-product"><h4>Sopa criolla</h4><strong>S/ 20</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Ensaladas <span>Frescas y de la casa</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Ensalada fresca</h4><p>Lechuga orgánica, tomate, pepino, brócoli, zanahoria, palta y rabanito.</p><strong>S/ 15</strong></article><article class="static-product"><h4>Ensalada especial</h4><p>Lechuga, tomate, zanahoria cocida, brócoli, champiñones, aceituna, palta y huevo duro.</p><strong>S/ 19</strong></article><article class="static-product"><h4>Ensalada César</h4><p>Lechuga, tomates, queso parmesano, crutones, huevo duro y pechuga de pollo.</p><strong>S/ 27</strong></article><article class="static-product"><h4>Ensalada Salvaje</h4><p>Lechuga, tomate, palta, queso, palmito, cecina y jamón.</p><strong>S/ 29</strong></article><article class="static-product"><h4>Ensalada de casa</h4><p>Lechuga, tomate, cebolla blanca, brócoli, palta, queso edam y pechuga a la plancha.</p><strong>S/ 29</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Piqueos <span>Para compartir</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Salchipapa clásica</h4><p>Salchicha frankfurter en trozos acompañada con papas fritas.</p><strong>S/ 19</strong></article><article class="static-product"><h4>Salchipapa especial</h4><p>Salchicha frankfurter, papas fritas y dos huevos.</p><strong>S/ 26</strong></article><article class="static-product"><h4>Salchipapa regional</h4><p>Salchicha, cecina, papas fritas, huevo y plátano maduro.</p><strong>S/ 29</strong></article><article class="static-product"><h4>Chicharrón de pollo</h4><p>Filete de pechuga en trozos, rebozado y acompañado de papas fritas.</p><strong>S/ 26</strong></article><article class="static-product"><h4>Tequeños clásicos (10 unidades)</h4><p>Rellenos de queso y jamón con salsa de guacamole.</p><strong>S/ 18</strong></article><article class="static-product"><h4>Tequeños regionales (10 unidades)</h4><p>Rellenos de cecina y calabresa con guacamole.</p><strong>S/ 20</strong></article><article class="static-product"><h4>Canastas amazónicas</h4><p>Cuatro patacones rellenos de cecina y calabresa con salsa de cocona.</p><strong>S/ 17</strong></article><article class="static-product"><h4>Canastas con lomo al jugo</h4><p>Cuatro patacones con lomito al jugo y salsa de cocona.</p><strong>S/ 19</strong></article><article class="static-product"><h4>Alitas (6 unidades)</h4><p>Incluye una salsa a elección: BBQ, acevichado, búfalo, anticuchera, Salvaje o maracuyá.</p><strong>S/ 25</strong></article><article class="static-product"><h4>Alitas (10 unidades)</h4><p>Incluye una salsa a elección: BBQ, acevichado, búfalo, anticuchera, Salvaje o maracuyá.</p><strong>S/ 35</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Platos amazónicos Salvaje <span>Sabores regionales</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Toscana parrillero</h4><strong>S/ 25</strong></article><article class="static-product"><h4>Pollo canga</h4><strong>S/ 26</strong></article><article class="static-product"><h4>Tacacho con cecina</h4><strong>S/ 25</strong></article><article class="static-product"><h4>Tacacho con cecina + chorizo</h4><strong>S/ 29</strong></article><article class="static-product"><h4>Chaufa amazónico</h4><strong>S/ 34</strong></article><article class="static-product"><h4>Paco frito</h4><strong>S/ 35</strong></article><article class="static-product"><h4>Saltado de cecina</h4><strong>S/ 35</strong></article><article class="static-product"><h4>Ronda amazónica</h4><p>Cecina, chancho, chaufa amazónico, tacacho y chorizo regional.</p><strong>S/ 50</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Nuestra cocina <span>Clásicos y favoritos</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Lomo saltado</h4><strong>S/ 35</strong></article><article class="static-product"><h4>Lomo saltado a lo pobre</h4><strong>S/ 38</strong></article><article class="static-product"><h4>Tallarín saltado lomo fino</h4><strong>S/ 37</strong></article><article class="static-product"><h4>Tallarín saltado pollo</h4><strong>S/ 32</strong></article><article class="static-product"><h4>Chaufa de pollo</h4><strong>S/ 24</strong></article><article class="static-product"><h4>Chaufa especial</h4><strong>S/ 33</strong></article><article class="static-product"><h4>Saltado de pollo</h4><strong>S/ 29</strong></article><article class="static-product"><h4>Arroz con pato</h4><strong>Consultar precio</strong></article><article class="static-product"><h4>Filete de pechuga</h4><p>Papas fritas y ensalada.</p><strong>S/ 24</strong></article><article class="static-product"><h4>Filete light</h4><p>Filete de pechuga con ensalada especial.</p><strong>S/ 27</strong></article><article class="static-product"><h4>Filete a lo pobre</h4><p>Filete de pechuga, papas fritas, arroz, plátano y huevo frito.</p><strong>S/ 29</strong></article><article class="static-product"><h4>Filete parrillero</h4><p>Filete de pechuga, mollejitas, chorizo, papas fritas y ensalada.</p><strong>S/ 32</strong></article><article class="static-product"><h4>Filete Salvaje</h4><p>Filete de pechuga, queso, tocino, champiñones y jamón.</p><strong>S/ 34</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Parrillas <span>Para uno o para compartir</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Parrilla personal</h4><p>Bife brasilera, filete de pollo, anticucho, toscana y vaso de refresco.</p><strong>S/ 60</strong></article><article class="static-product"><h4>Parrilla mediana</h4><p>Bife brasilera, filete de pollo, chuleta de cerdo, anticuchos, chorizos y jarra de sangría.</p><strong>S/ 140</strong></article><article class="static-product"><h4>Parrilla familiar</h4><p>Bife brasilera, picaña, lomo fino, filetes de pollo, chuleta, anticuchos, chorizos y jarra de sangría.</p><strong>S/ 220</strong></article><article class="static-product"><h4>Parrilla Salvaje</h4><p>Bife brasilera, picaña, lomo fino, pollo, chuleta, anticuchos, chorizo, molleja y jarra de sangría.</p><strong>S/ 300</strong></article>
+          </div></details>
+
+          <details class="menu-category-panel"><summary>Guarniciones <span>Acompaña tu plato</span></summary><div class="static-product-grid">
+            <article class="static-product"><h4>Arroz</h4><strong>S/ 7</strong></article><article class="static-product"><h4>Papas fritas</h4><strong>S/ 10</strong></article><article class="static-product"><h4>Patacones</h4><strong>S/ 10</strong></article><article class="static-product"><h4>Papa dorada</h4><strong>S/ 10</strong></article><article class="static-product"><h4>Yucas fritas</h4><strong>S/ 10</strong></article><article class="static-product"><h4>Tacacho</h4><strong>S/ 10</strong></article>
+          </div></details>
         </div>
-
-        <nav class="menu-categories" id="menu-categories" aria-label="Categorías de la carta">
-          <!-- Las categorías se generan automáticamente desde script.js. -->
-        </nav>
-
-        <div class="menu-results" aria-live="polite">
-          <div class="menu-results-heading">
-            <h3 id="menu-category-title">Selecciona una categoría</h3>
-            <p id="menu-results-count"></p>
-          </div>
-          <div class="product-grid" id="product-grid">
-            <!-- Los platos se generan desde script.js. -->
-          </div>
-          <p class="menu-empty" id="menu-empty" hidden>No encontramos productos con esa búsqueda.</p>
-        </div>
-
-        <section class="product-detail" id="product-detail" aria-live="polite" hidden>
-          <button class="detail-back" id="detail-back" type="button">← Volver a los platos</button>
-          <p class="eyebrow eyebrow-light" id="detail-category">Detalle del plato</p>
-          <h3 id="detail-title">Nombre del plato</h3>
-          <p class="detail-description" id="detail-description"></p>
-          <div class="detail-options-wrap" id="detail-options-wrap">
-            <h4 id="detail-options-title">Opciones disponibles</h4>
-            <div class="detail-options" id="detail-options"></div>
-          </div>
-          <div id="detail-extra-options" class="detail-extra-options"></div>
-        </section>
-
-        <p class="menu-disclaimer">
-          Ven y disfruta de nuestra carta completa en el restaurante. Los precios y disponibilidad pueden variar según la temporada y la ubicación.
-        </p>
+        <p class="menu-disclaimer">Ven y disfruta de nuestros delicios platos y la maravillosa experiencia.</p>
       </div>
     </section>
 
@@ -186,11 +243,42 @@
     </section>
 
     <section class="reservation" id="reservas">
-      <div class="reservation-inner">
-        <p class="eyebrow eyebrow-light">Tu próxima salida empieza aquí</p>
-        <h2>¿Nos encontramos<br><em>en Salvaje?</em></h2>
-        <p>Comunícate con el restaurante para consultar disponibilidad y coordinar tu visita.</p>
-        <a class="button button-gold" href="#contacto">Consultar una reserva <span aria-hidden="true">↗</span></a>
+      <div class="reservation-inner reservation-layout">
+        <div class="reservation-intro">
+          <p class="eyebrow eyebrow-light">Tu próxima salida empieza aquí</p>
+          <h2>Reserva tu momento<br><em>en Salvaje</em></h2>
+          <p>Elige una experiencia para dos o solicita una mesa para compartir con amigos y familia. La reserva quedará pendiente de confirmación por el restaurante.</p>
+        </div>
+        <form class="reservation-form" id="reservation-form">
+          <fieldset class="reservation-types">
+            <legend>¿Qué tipo de reserva deseas?</legend>
+            <label class="reservation-choice">
+              <input type="radio" name="tipo-reserva" value="Reserva para parejas" checked>
+              <span class="choice-icon" aria-hidden="true">♡</span>
+              <span><strong>Reserva para parejas</strong><small>Una ocasión especial para dos</small></span>
+            </label>
+            <label class="reservation-choice">
+              <input type="radio" name="tipo-reserva" value="Reserva de mesa">
+              <span class="choice-icon" aria-hidden="true">▤</span>
+              <span><strong>Reserva de mesa</strong><small>Para amigos o familia</small></span>
+            </label>
+          </fieldset>
+          <div class="reservation-fields">
+            <label>Nombre completo<input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required></label>
+            <label>Fecha<input name="fecha" type="date" id="reservation-date" required></label>
+            <label>Hora<select name="hora" required><option value="">Selecciona una hora</option><option>12:00 p. m.</option><option>1:00 p. m.</option><option>2:00 p. m.</option><option>6:00 p. m.</option><option>7:00 p. m.</option><option>8:00 p. m.</option><option>9:00 p. m.</option></select></label>
+            <label>Número de personas<select name="personas" id="reservation-people" required><option value="2">2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option><option value="5">5 personas</option><option value="6">6 personas</option><option value="7">7 personas</option><option value="8">8 personas</option><option value="9">9 personas</option><option value="10">10 personas</option></select></label>
+          </div>
+          <div class="reservation-advance">
+            <label for="reservation-consumption">Consumo total estimado (S/)</label>
+            <input name="consumo-estimado" id="reservation-consumption" type="number" min="1" step="0.01" inputmode="decimal" placeholder="Ej.: 150" required>
+            <p>Para reservar se solicita un adelanto del <strong>20 %</strong> del consumo estimado.</p>
+            <p class="advance-preview">Adelanto requerido = consumo estimado × 0.20. Ejemplo: por un consumo de S/ 150, el adelanto es S/ 30.</p>
+          </div>
+          <p class="button button-gold reservation-submit reservation-static-note">Completa tus datos y coordina la confirmación directamente con el restaurante.</p>
+          <p class="reservation-disclaimer">La solicitud no confirma automáticamente la reserva. El restaurante verificará la disponibilidad y compartirá los datos de pago para validar el adelanto.</p>
+          <div class="reservation-result" id="reservation-result" role="status" aria-live="polite" hidden></div>
+        </form>
       </div>
     </section>
   </main>
@@ -213,17 +301,17 @@
         <h2>Visítanos</h2>
         <!-- Reemplaza estos datos por la información oficial del restaurante. -->
         <p>28 De Julio con, ica 17001</p>
-        <p>Horarios de atención: Lunes a Domingo, 12:00 AM - 11:00 PM</p>
+        <p>De 12:00 am a 11:00 pm</p>
       </div>
       <div>
         <h2>Contacto</h2>
         <!-- Reemplaza los datos de ejemplo antes de publicar. -->
-        <p>+ 51 980710043</p>
+        <p><a href="tel:+51 980710043">+51 980 710 043</a></p>
         <p>Agrega aquí el correo de contacto.</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© <span id="year">2026</span> Salvaje Restobar. Todos los derechos reservados.</p>
+      <p>© <span>2026</span> Salvaje Restobar. Todos los derechos reservados.</p>
       <a href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>
