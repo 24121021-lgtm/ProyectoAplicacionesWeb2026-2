@@ -1301,3 +1301,84 @@ h1 em {
   .menu-category-panel > summary { flex-direction: column; gap: 6px; }
   .menu-category-panel > summary span { text-align: left; }
 }
+
+
+/* Coctelería, promociones y novedades: maquetación estática HTML + CSS */
+.cocktail-section { padding-block: var(--section-space); }
+.cocktail-section .section-heading { text-align: center; }
+.cocktail-section .section-heading > p:last-child { max-width: 680px; margin-inline: auto; }
+.cocktail-categories { display: grid; gap: 14px; max-width: 1000px; margin: 38px auto 0; }
+.cocktail-panel { border: 1px solid rgb(32 57 44 / 20%); background: var(--white); box-shadow: 0 10px 28px rgb(23 42 32 / 5%); }
+.cocktail-panel > summary { display: flex; align-items: center; gap: 18px; padding: 22px 26px; cursor: pointer; list-style: none; }
+.cocktail-panel > summary::-webkit-details-marker { display: none; }
+.cocktail-panel > summary::after { content: "+"; margin-left: auto; color: var(--brown); font-size: 1.7rem; font-weight: 300; }
+.cocktail-panel[open] > summary::after { content: "−"; }
+.cocktail-number { display: grid; place-items: center; flex: 0 0 46px; width: 46px; height: 46px; border-radius: 50%; color: var(--green-950); background: var(--gold-light); font-size: .8rem; font-weight: 700; }
+.cocktail-panel > summary strong, .cocktail-panel > summary small { display: block; }
+.cocktail-panel > summary strong { color: var(--green-900); font-family: Georgia, serif; font-size: 1.35rem; font-weight: 400; }
+.cocktail-panel > summary small { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.cocktail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 0 22px 22px; }
+.cocktail-card { padding: 18px; border-left: 2px solid var(--gold); background: var(--cream-light); }
+.cocktail-card h3 { margin-bottom: 8px; color: var(--green-900); font-size: 1.15rem; }
+.cocktail-card p { margin-bottom: 0; color: var(--muted); font-size: .92rem; }
+.cocktail-note { max-width: 1000px; margin: 18px auto 0; color: var(--muted); font-size: .82rem; }
+.news-section { padding-block: var(--section-space); }
+.news-section .section-heading { text-align: center; }
+.news-section .section-heading > p:last-child { max-width: 700px; margin-inline: auto; }
+.news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 38px; }
+.news-card { display: flex; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid rgb(226 189 112 / 25%); background: rgb(255 255 255 / 4%); }
+.news-label { display: inline-block; margin-bottom: 14px; padding: 5px 10px; color: var(--green-950); background: var(--gold-light); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.news-date { margin-bottom: 12px; color: var(--gold-light); font-size: .82rem; }
+.news-card h3 { margin-bottom: 12px; color: var(--white); font-size: 1.55rem; }
+.news-card > p:not(.news-date) { color: rgb(255 255 255 / 78%); }
+.news-card .news-edit-note { margin-top: auto; margin-bottom: 0; padding-top: 12px; color: var(--gold-light) !important; font-size: .78rem; }
+.news-warning { margin: 22px 0 0; color: rgb(255 255 255 / 65%); font-size: .8rem; text-align: center; }
+@media (max-width: 900px) { .cocktail-grid, .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .cocktail-panel > summary { padding: 18px 15px; gap: 12px; } .cocktail-panel > summary strong { font-size: 1.1rem; } .cocktail-panel > summary small { font-size: .8rem; } .cocktail-grid, .news-grid { grid-template-columns: 1fr; } .cocktail-grid { padding-inline: 14px; } .news-card { padding: 22px; } }
+
+
+/* Accesos independientes para desplegar cada carta (solo HTML y CSS) */
+.main-menu-disclosure { margin: 0 auto; width: 100%; }
+.main-menu-trigger {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: min(100%, 920px);
+  min-height: 104px;
+  margin: 0 auto;
+  padding: 22px 28px;
+  border: 1px solid rgb(200 157 69 / 55%);
+  border-radius: 14px;
+  color: var(--white);
+  background: linear-gradient(135deg, #20392c, #14251d);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 16%);
+  text-align: left;
+  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+}
+.main-menu-trigger::-webkit-details-marker { display: none; }
+.main-menu-trigger:hover { border-color: var(--gold-light); transform: translateY(-2px); }
+.main-menu-trigger > span:nth-child(2) { display: grid; gap: 6px; flex: 0 1 520px; }
+.main-menu-trigger strong { color: var(--gold-light); font-size: clamp(1.15rem, 2.5vw, 1.55rem); }
+.main-menu-trigger small { color: #eee8dc; font-size: .92rem; font-weight: 400; }
+.trigger-icon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; border-radius: 50%; color: var(--green-950); background: var(--gold-light); font-size: 1.5rem; }
+.trigger-arrow { margin-left: auto; color: var(--gold-light); font-size: 1.8rem; transition: transform .2s ease; }
+.main-menu-disclosure[open] > .main-menu-trigger { border-radius: 14px 14px 0 0; }
+.main-menu-disclosure[open] > .main-menu-trigger .trigger-arrow { transform: rotate(45deg); }
+.main-menu-content { padding-top: 26px; }
+.food-menu-disclosure .main-menu-content { padding-inline: 0; }
+.cocktail-menu-disclosure { display: block; }
+.cocktail-menu-disclosure > .main-menu-trigger { background: linear-gradient(135deg, #f5f0e5, #e7deca); color: var(--green-950); border-color: rgb(32 57 44 / 24%); }
+.cocktail-menu-disclosure > .main-menu-trigger small { color: #526256; }
+.cocktail-menu-disclosure > .main-menu-trigger strong { color: #8b6a2b; }
+.cocktail-menu-disclosure > .main-menu-trigger .trigger-icon { color: #f5f0e5; background: var(--green-950); }
+.cocktail-menu-disclosure > .main-menu-trigger .trigger-arrow { color: #8b6a2b; }
+.cocktail-menu-disclosure .main-menu-content { padding-top: 30px; }
+@media (max-width: 600px) {
+  .main-menu-trigger { min-height: 92px; gap: 12px; padding: 17px 14px; }
+  .trigger-icon { width: 42px; height: 42px; flex-basis: 42px; font-size: 1.2rem; }
+  .main-menu-trigger small { font-size: .8rem; }
+  .trigger-arrow { font-size: 1.4rem; }
+}

@@ -25,6 +25,8 @@
         <a href="#nosotros">Nosotros</a>
         <a href="#experiencia">Experiencia</a>
         <a href="#menu">Nuestra carta</a>
+        <a href="#cocteles">Cócteles</a>
+        <a href="#novedades">Promociones y eventos</a>
         <a href="#galeria">Galería</a>
         <a class="nav-cta" href="#reservas">Reservar mesa</a>
       </div>
@@ -121,6 +123,9 @@
 
     <section class="menu-section section-dark" id="menu">
       <div class="section-shell">
+        <details class="main-menu-disclosure food-menu-disclosure">
+          <summary class="main-menu-trigger"><span class="trigger-icon" aria-hidden="true">🍽</span><span><strong>Ver carta de comidas</strong><small>Platos, pastas, carnes y especialidades</small></span><span class="trigger-arrow" aria-hidden="true">＋</span></summary>
+          <div class="main-menu-content">
         <div class="section-heading section-heading-light">
           <p class="eyebrow eyebrow-light">Nuestra propuesta</p>
           <h2>Descubre la carta <em>Salvaje.</em></h2>
@@ -128,7 +133,7 @@
         </div>
 
         <div class="static-menu-categories">
-          <details class="menu-category-panel" open>
+          <details class="menu-category-panel">
             <summary>Pastas <span>Spaghetti · Fetuccini</span></summary>
             <div class="pasta-types">
               <details class="pasta-type" open>
@@ -223,6 +228,83 @@
           </div></details>
         </div>
         <p class="menu-disclaimer">Ven y disfruta de nuestros delicios platos y la maravillosa experiencia.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="cocktail-section section-shell" id="cocteles">
+      <details class="main-menu-disclosure cocktail-menu-disclosure">
+        <summary class="main-menu-trigger"><span class="trigger-icon" aria-hidden="true">🍸</span><span><strong>Ver carta de cócteles</strong><small>Clásicos, vírgenes y creaciones de la casa</small></span><span class="trigger-arrow" aria-hidden="true">＋</span></summary>
+        <div class="main-menu-content">
+      <div class="section-heading">
+        <p class="eyebrow">Barra Salvaje</p>
+        <h2>Una mezcla para cada <em>momento.</em></h2>
+        <p>Explora las categorías de nuestra coctelería. Pulsa cada categoría para ver las opciones.</p>
+      </div>
+      <div class="cocktail-categories">
+        <details class="cocktail-panel">
+          <summary><span class="cocktail-number">01</span><span><strong>Cócteles clásicos</strong><small>Recetas tradicionales para disfrutar sin apuro.</small></span></summary>
+          <div class="cocktail-grid">
+            <article class="cocktail-card"><h3>Pisco Sour</h3><p>Pisco, limón, jarabe de goma, clara de huevo y unas gotas de amargo de angostura.</p></article>
+            <article class="cocktail-card"><h3>Mojito</h3><p>Ron, hierbabuena, limón, azúcar y soda, servido bien frío.</p></article>
+            <article class="cocktail-card"><h3>Margarita</h3><p>Tequila, licor de naranja y limón, con borde de sal.</p></article>
+            <article class="cocktail-card"><h3>Cuba Libre</h3><p>Ron, bebida de cola y limón.</p></article>
+          </div>
+        </details>
+        <details class="cocktail-panel">
+          <summary><span class="cocktail-number">02</span><span><strong>Cócteles vírgenes</strong><small>Alternativas sin alcohol, frescas y frutales.</small></span></summary>
+          <div class="cocktail-grid">
+            <article class="cocktail-card"><h3>Mojito virgen</h3><p>Hierbabuena, limón, azúcar y soda.</p></article>
+            <article class="cocktail-card"><h3>San Francisco</h3><p>Mezcla frutal de naranja, piña, limón y granadina.</p></article>
+            <article class="cocktail-card"><h3>Piña colada virgen</h3><p>Piña y crema de coco, con textura cremosa.</p></article>
+            <article class="cocktail-card"><h3>Limonada de hierbabuena</h3><p>Limón, hierbabuena y hielo.</p></article>
+          </div>
+        </details>
+        <details class="cocktail-panel">
+          <summary><span class="cocktail-number">03</span><span><strong>Creaciones de la casa</strong><small>Combinaciones especiales para descubrir nuevos sabores.</small></span></summary>
+          <div class="cocktail-grid">
+            <article class="cocktail-card"><h3>Salvaje tropical</h3><p>Una propuesta frutal de la casa. Completa aquí la receta oficial.</p></article>
+            <article class="cocktail-card"><h3>Maracuyá sour</h3><p>Una versión cítrica y aromática con maracuyá. Confirma la receta de la barra.</p></article>
+            <article class="cocktail-card"><h3>Especial de temporada</h3><p>Espacio para destacar una mezcla temporal o una recomendación del bartender.</p></article>
+          </div>
+        </details>
+      </div>
+      <p class="cocktail-note">Los nombres y recetas de ejemplo deben revisarse con la carta oficial antes de publicar. Los precios pueden añadirse debajo de cada cóctel cuando estén confirmados.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="news-section section-dark" id="novedades">
+      <div class="section-shell">
+        <div class="section-heading section-heading-light">
+          <p class="eyebrow eyebrow-light">Siempre hay algo que celebrar</p>
+          <h2>Promociones y <em>eventos.</em></h2>
+          <p>Consulta las fechas de nuestras promociones, noches especiales y próximos eventos.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card news-promo">
+            <span class="news-label">Promoción</span>
+            <p class="news-date">Vigencia: <time datetime="2026-10-14">14/10/2026</time> – <time datetime="2026-10-31">31/10/2026</time></p>
+            <h3>Promoción destacada</h3>
+            <p>Escribe aquí el nombre de la promoción, los platos o bebidas incluidos y las condiciones.</p>
+            <p class="news-edit-note">Edita el título, la descripción y las fechas directamente en index.html.</p>
+          </article>
+          <article class="news-card">
+            <span class="news-label">Próximo evento</span>
+            <p class="news-date">Fecha: <time datetime="2026-11-07">07/11/2026</time></p>
+            <h3>Noche Salvaje</h3>
+            <p>Publica aquí la información de música en vivo, celebración temática, invitados o actividad especial.</p>
+            <p class="news-edit-note">Cambia la fecha cuando el evento esté confirmado.</p>
+          </article>
+          <article class="news-card news-status">
+            <span class="news-label">Aviso importante</span>
+            <h3>Información para visitantes</h3>
+            <p>Usa este espacio para anunciar cambios de horario, eventos cancelados o si el local estará abierto en una fecha especial.</p>
+            <p class="news-edit-note">Actualiza este aviso y retíralo cuando deje de ser necesario.</p>
+          </article>
+        </div>
+        <p class="news-warning">Importante: las fechas y textos mostrados son ejemplos editables, no anuncios confirmados. Reemplázalos por la información real antes de publicar.</p>
       </div>
     </section>
 
@@ -296,6 +378,8 @@
         <h2>Explora</h2>
         <a href="#nosotros">Nosotros</a>
         <a href="#menu">Nuestra carta</a>
+        <a href="#cocteles">Cócteles</a>
+        <a href="#novedades">Promociones y eventos</a>
         <a href="#galeria">Galería</a>
       </div>
       <div>
