@@ -350,13 +350,13 @@
             <label>Nombre completo<input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required></label>
             <label>Fecha<input name="fecha" type="date" id="reservation-date" required></label>
             <label>Hora<select name="hora" required><option value="">Selecciona una hora</option><option>12:00 p. m.</option><option>1:00 p. m.</option><option>2:00 p. m.</option><option>6:00 p. m.</option><option>7:00 p. m.</option><option>8:00 p. m.</option><option>9:00 p. m.</option></select></label>
-            <label>Número de personas<select name="personas" id="reservation-people" required><option value="2">2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option><option value="5">5 personas</option><option value="6">6 personas</option><option value="7">7 personas</option><option value="8">8 personas</option><option value="9">9 personas</option><option value="10">10 personas</option></select></label>
+            <label>Número de personas<select name="personas" id="reservation-people" required><option value="1">1 persona</option><option value="2" selected>2 personas</option><option value="3">3 personas</option><option value="4">4 personas</option><option value="5">5 personas</option><option value="6">6 personas</option><option value="7">7 personas</option><option value="8">8 personas</option><option value="9">9 personas</option><option value="10">10 personas</option></select></label>
           </div>
           <div class="reservation-advance">
             <label for="reservation-consumption">Consumo total estimado (S/)</label>
             <input name="consumo-estimado" id="reservation-consumption" type="number" min="1" step="0.01" inputmode="decimal" placeholder="Ej.: 150" required>
-            <p>Para reservar se solicita un adelanto del <strong>20 %</strong> del consumo estimado.</p>
-            <p class="advance-preview" id="advance-preview" aria-live="polite">Ingresa el consumo estimado para calcular el adelanto del 20 %.</p>
+            <p>El adelanto se establece según la cantidad de personas: <strong>S/ 30</strong> para reservas de 1 a 5 personas y <strong>S/ 50</strong> para reservas de más de 5 personas. El consumo estimado es solo referencial.</p>
+            <p class="advance-preview" id="advance-preview" aria-live="polite">Adelanto requerido: S/ 30.00 para reservas de 1 a 5 personas.</p>
           </div>
           <button class="button button-gold reservation-submit" type="submit">Enviar solicitud de reserva por WhatsApp</button>
           <p class="reservation-disclaimer">La solicitud no confirma automáticamente la reserva. El restaurante verificará la disponibilidad y compartirá los datos de pago para validar el adelanto.</p>

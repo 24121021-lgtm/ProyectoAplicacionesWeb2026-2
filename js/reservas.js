@@ -1,6 +1,6 @@
 /* =========================================================
    SALVAJE RESTOBAR — sistema de reservas
-   JavaScript puro: validación, cálculo del adelanto y WhatsApp.
+   JavaScript puro: validación, cálculo del adelanto fijo y WhatsApp.
    ========================================================= */
 
 "use strict";
@@ -8,7 +8,8 @@
 // Número que aparece actualmente en el pie de página del proyecto.
 // Confirma que este número también recibe mensajes por WhatsApp antes de publicar.
 const WHATSAPP_NUMBER = "51980710043";
-const PORCENTAJE_ADELANTO = 0.20;
+const ADELANTO_HASTA_CINCO_PERSONAS = 30;
+const ADELANTO_MAS_DE_CINCO_PERSONAS = 50;
 
 const formatoSoles = new Intl.NumberFormat("es-PE", {
   style: "currency",
@@ -18,11 +19,15 @@ const formatoSoles = new Intl.NumberFormat("es-PE", {
 const formulario = document.querySelector("#reservation-form");
 const campoConsumo = document.querySelector("#reservation-consumption");
 const campoFecha = document.querySelector("#reservation-date");
+const campoPersonas = document.querySelector("#reservation-people");
 const vistaAdelanto = document.querySelector("#advance-preview");
 const resultado = document.querySelector("#reservation-result");
 
 // Solo se ejecuta si la página contiene el formulario de reservas.
-if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
+if (
+  formulario && campoConsumo && campoFecha && campoPersonas &&
+  vistaAdelanto && resultado
+) {
   // La reserva debe realizarse como mínimo para el día siguiente.
   // Se usa la fecha local del dispositivo para evitar desfases por UTC.
   const manana = new Date();
@@ -35,21 +40,18 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
 
   campoFecha.min = fechaMinima;
 
-  /** Calcula y muestra el adelanto equivalente al 20 % del consumo. */
+  /** Calcula y muestra el adelanto fijo según el número de personas. */
   function actualizarAdelanto() {
-    const valorConsumo = campoConsumo.value;
-    const consumo = Number(valorConsumo);
+    const personas = Number(campoPersonas.value);
+    const adelanto = personas > 5
+      ? ADELANTO_MAS_DE_CINCO_PERSONAS
+      : ADELANTO_HASTA_CINCO_PERSONAS;
+    const tramo = personas > 5
+      ? "para reservas de más de 5 personas"
+      : "para reservas de 1 a 5 personas";
 
-    if (!valorConsumo || !Number.isFinite(consumo) || consumo <= 0) {
-      vistaAdelanto.textContent =
-        "Ingresa el consumo estimado para calcular el adelanto del 20 %.";
-      return;
-    }
-
-    const adelanto = consumo * PORCENTAJE_ADELANTO;
     vistaAdelanto.textContent =
-      `Adelanto requerido: ${formatoSoles.format(adelanto)} ` +
-      `(20 % de ${formatoSoles.format(consumo)}).`;
+      `Adelanto requerido: ${formatoSoles.format(adelanto)} ${tramo}.`;
   }
 
   /** Comprueba que la fecha seleccionada sea mañana o un día posterior. */
@@ -77,6 +79,10 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
     const fechaSeleccionada = new Date(
       `${datosFormulario.get("fecha")}T12:00:00`
     );
+    const personas = Number(datosFormulario.get("personas"));
+    const adelanto = personas > 5
+      ? ADELANTO_MAS_DE_CINCO_PERSONAS
+      : ADELANTO_HASTA_CINCO_PERSONAS;
 
     return {
       tipo: datosFormulario.get("tipo-reserva"),
@@ -87,14 +93,16 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
         year: "numeric"
       }).format(fechaSeleccionada),
       hora: datosFormulario.get("hora"),
-      personas: datosFormulario.get("personas"),
-      consumo: Number(datosFormulario.get("consumo-estimado"))
+      personas,
+      consumo: Number(datosFormulario.get("consumo-estimado")),
+      adelanto
     };
   }
 
   /** Verifica los campos obligatorios y los valores del formulario. */
   function validarReserva() {
     campoConsumo.setCustomValidity("");
+    campoPersonas.setCustomValidity("");
 
     if (!formulario.checkValidity()) {
       formulario.reportValidity();
@@ -114,13 +122,20 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
       return false;
     }
 
+    const personas = Number(campoPersonas.value);
+    if (!Number.isInteger(personas) || personas < 1) {
+      campoPersonas.setCustomValidity(
+        "Selecciona una cantidad válida de personas."
+      );
+      campoPersonas.reportValidity();
+      return false;
+    }
+
     return true;
   }
 
   /** Construye el texto que el cliente enviará al WhatsApp del restaurante. */
   function crearMensajeWhatsApp(datos) {
-    const adelanto = datos.consumo * PORCENTAJE_ADELANTO;
-
     return [
       "Hola, Salvaje Restobar. Deseo solicitar una reserva.",
       "",
@@ -129,10 +144,11 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
       `Fecha: ${datos.fecha}`,
       `Hora: ${datos.hora}`,
       `Número de personas: ${datos.personas}`,
-      `Consumo estimado: ${formatoSoles.format(datos.consumo)}`,
-      `Adelanto (20 %): ${formatoSoles.format(adelanto)}`,
+      `Consumo total estimado: ${formatoSoles.format(datos.consumo)}`,
+      `Adelanto solicitado: ${formatoSoles.format(datos.adelanto)}`,
       "",
-      "Por favor, confirmar la disponibilidad. Entiendo que la solicitud queda pendiente de confirmación. Gracias."
+      "El adelanto es de S/ 30 para grupos de 1 a 5 personas y de S/ 50 para grupos de más de 5 personas.",
+      "Por favor, confirmar la disponibilidad e indicar los datos para realizar el adelanto. Entiendo que la solicitud queda pendiente de confirmación. Gracias."
     ].join("\n");
   }
 
@@ -172,12 +188,12 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
 
   campoConsumo.addEventListener("input", () => {
     campoConsumo.setCustomValidity("");
-    actualizarAdelanto();
   });
 
+  campoPersonas.addEventListener("change", actualizarAdelanto);
   campoFecha.addEventListener("change", validarFecha);
   formulario.addEventListener("submit", enviarReservaWhatsApp);
 
-  // Muestra el mensaje inicial del cálculo al cargar la página.
+  // Muestra el adelanto correspondiente a la cantidad inicial de personas.
   actualizarAdelanto();
 }
