@@ -1148,7 +1148,7 @@ h1 em {
   outline-offset: 1px;
 }
 .reservation-fields select:disabled { opacity: .75; cursor: not-allowed; }
-.reservation-submit { width: 100%; justify-content: center; margin-top: 22px; cursor: pointer; }
+.reservation-submit { width: 100%; justify-content: center; margin-top: 22px; cursor: pointer; font: inherit; text-align: center; }
 .reservation-advance { margin-top: 18px; padding: 16px; border: 1px solid rgba(205, 165, 93, .45); border-radius: 12px; background: rgba(255, 255, 255, .045); }
 .reservation-advance label { display: block; margin-bottom: 8px; font-size: .88rem; font-weight: 700; }
 .reservation-advance input { width: 100%; padding: 12px 13px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(0,0,0,.18); color: inherit; font: inherit; }

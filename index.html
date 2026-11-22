@@ -356,9 +356,9 @@
             <label for="reservation-consumption">Consumo total estimado (S/)</label>
             <input name="consumo-estimado" id="reservation-consumption" type="number" min="1" step="0.01" inputmode="decimal" placeholder="Ej.: 150" required>
             <p>Para reservar se solicita un adelanto del <strong>20 %</strong> del consumo estimado.</p>
-            <p class="advance-preview">Adelanto requerido = consumo estimado × 0.20. Ejemplo: por un consumo de S/ 150, el adelanto es S/ 30.</p>
+            <p class="advance-preview" id="advance-preview" aria-live="polite">Ingresa el consumo estimado para calcular el adelanto del 20 %.</p>
           </div>
-          <p class="button button-gold reservation-submit reservation-static-note">Completa tus datos y coordina la confirmación directamente con el restaurante.</p>
+          <button class="button button-gold reservation-submit" type="submit">Enviar solicitud de reserva por WhatsApp</button>
           <p class="reservation-disclaimer">La solicitud no confirma automáticamente la reserva. El restaurante verificará la disponibilidad y compartirá los datos de pago para validar el adelanto.</p>
           <div class="reservation-result" id="reservation-result" role="status" aria-live="polite" hidden></div>
         </form>
@@ -400,5 +400,6 @@
       <a href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>
+  <script src="./js/reservas.js" defer></script>
 </body>
 </html>
