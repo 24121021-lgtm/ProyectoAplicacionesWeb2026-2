@@ -23,12 +23,14 @@ const resultado = document.querySelector("#reservation-result");
 
 // Solo se ejecuta si la página contiene el formulario de reservas.
 if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
-  // Evita que el cliente pueda seleccionar una fecha anterior al día actual.
-  const hoy = new Date();
+  // La reserva debe realizarse como mínimo para el día siguiente.
+  // Se usa la fecha local del dispositivo para evitar desfases por UTC.
+  const manana = new Date();
+  manana.setDate(manana.getDate() + 1);
   const fechaMinima = [
-    hoy.getFullYear(),
-    String(hoy.getMonth() + 1).padStart(2, "0"),
-    String(hoy.getDate()).padStart(2, "0")
+    manana.getFullYear(),
+    String(manana.getMonth() + 1).padStart(2, "0"),
+    String(manana.getDate()).padStart(2, "0")
   ].join("-");
 
   campoFecha.min = fechaMinima;
@@ -50,7 +52,7 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
       `(20 % de ${formatoSoles.format(consumo)}).`;
   }
 
-  /** Comprueba que la fecha seleccionada no sea anterior al día actual. */
+  /** Comprueba que la fecha seleccionada sea mañana o un día posterior. */
   function validarFecha() {
     campoFecha.setCustomValidity("");
 
@@ -60,7 +62,7 @@ if (formulario && campoConsumo && campoFecha && vistaAdelanto && resultado) {
 
     if (campoFecha.value < fechaMinima) {
       campoFecha.setCustomValidity(
-        "Selecciona hoy o una fecha posterior para solicitar tu reserva."
+        "Las reservas deben realizarse con al menos un día de anticipación. Selecciona mañana o una fecha posterior."
       );
       campoFecha.reportValidity();
       return false;
