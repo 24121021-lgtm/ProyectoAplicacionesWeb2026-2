@@ -25,7 +25,7 @@
         <a href="#nosotros">Nosotros</a>
         <a href="#experiencia">Experiencia</a>
         <a href="#menu">Nuestra carta</a>
-        <a href="#cocteles">Cócteles</a>
+        <a href="#cocteles">Bebidas y cócteles</a>
         <a href="#novedades">Promociones y eventos</a>
         <a href="#galeria">Galería</a>
         <a class="nav-cta" href="#reservas">Reservar mesa</a>
@@ -289,42 +289,79 @@
 
     <section class="cocktail-section section-shell" id="cocteles">
       <details class="main-menu-disclosure cocktail-menu-disclosure">
-        <summary class="main-menu-trigger"><span class="trigger-icon" aria-hidden="true">🍸</span><span><strong>Ver carta de cócteles</strong><small>Clásicos, vírgenes y creaciones de la casa</small></span><span class="trigger-arrow" aria-hidden="true">＋</span></summary>
+        <summary class="main-menu-trigger">
+          <span class="trigger-icon" aria-hidden="true">🍸</span>
+          <span><strong>Ver carta de bebidas</strong><small>Cócteles clásicos, opciones sin alcohol y creaciones de la casa</small></span>
+          <span class="trigger-arrow" aria-hidden="true">＋</span>
+        </summary>
         <div class="main-menu-content">
-      <div class="section-heading">
-        <p class="eyebrow">Barra Salvaje</p>
-        <h2>Una mezcla para cada <em>momento.</em></h2>
-        <p>Explora las categorías de nuestra coctelería. Pulsa cada categoría para ver las opciones.</p>
-      </div>
-      <div class="cocktail-categories">
-        <details class="cocktail-panel">
-          <summary><span class="cocktail-number">01</span><span><strong>Cócteles clásicos</strong><small>Recetas tradicionales para disfrutar sin apuro.</small></span></summary>
-          <div class="cocktail-grid">
-            <article class="cocktail-card"><h3>Pisco Sour</h3><p>Pisco, limón, jarabe de goma, clara de huevo y unas gotas de amargo de angostura.</p></article>
-            <article class="cocktail-card"><h3>Mojito</h3><p>Ron, hierbabuena, limón, azúcar y soda, servido bien frío.</p></article>
-            <article class="cocktail-card"><h3>Margarita</h3><p>Tequila, licor de naranja y limón, con borde de sal.</p></article>
-            <article class="cocktail-card"><h3>Cuba Libre</h3><p>Ron, bebida de cola y limón.</p></article>
+          <div class="section-heading">
+            <p class="eyebrow">Barra Salvaje</p>
+            <h2>Una mezcla para cada <em>momento.</em></h2>
+            <p>Explora nuestra selección y encuentra una bebida para acompañar tu visita.</p>
           </div>
-        </details>
-        <details class="cocktail-panel">
-          <summary><span class="cocktail-number">02</span><span><strong>Cócteles vírgenes</strong><small>Alternativas sin alcohol, frescas y frutales.</small></span></summary>
-          <div class="cocktail-grid">
-            <article class="cocktail-card"><h3>Mojito virgen</h3><p>Hierbabuena, limón, azúcar y soda.</p></article>
-            <article class="cocktail-card"><h3>San Francisco</h3><p>Mezcla frutal de naranja, piña, limón y granadina.</p></article>
-            <article class="cocktail-card"><h3>Piña colada virgen</h3><p>Piña y crema de coco, con textura cremosa.</p></article>
-            <article class="cocktail-card"><h3>Limonada de hierbabuena</h3><p>Limón, hierbabuena y hielo.</p></article>
+
+          <div class="drink-tools" aria-label="Buscador y filtros de bebidas">
+            <div class="drink-tools-heading">
+              <div>
+                <p class="drink-tools-eyebrow">DESCUBRE NUESTRA BARRA</p>
+                <h3>¿Qué te gustaría disfrutar?</h3>
+                <p>Busca por nombre, ingrediente o selecciona un tipo de bebida.</p>
+              </div>
+              <span class="drink-tools-decoration" aria-hidden="true">✦</span>
+            </div>
+
+            <label class="drink-search-label" for="drink-search">Buscar una bebida</label>
+            <div class="drink-search-field">
+              <svg class="drink-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+              <input class="drink-search-input" id="drink-search" type="search" placeholder="Ej.: Pisco Sour, maracuyá, hierbabuena..." autocomplete="off">
+              <button class="drink-search-clear" id="drink-search-clear" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+            </div>
+
+            <div class="drink-filter-area">
+              <div class="drink-filter-heading">
+                <span class="drink-filter-title">Filtrar por tipo</span>
+                <span class="drink-filter-hint">Selecciona una categoría</span>
+              </div>
+              <div class="drink-filter-list" id="drink-filters" aria-label="Tipos de bebidas"></div>
+            </div>
+
+            <div class="drink-results-row">
+              <p class="drink-results" id="drink-results" role="status" aria-live="polite">Mostrando todas las bebidas.</p>
+              <button class="drink-reset" id="drink-reset" type="button">Ver todas <span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="drink-empty-state" id="drink-empty" role="status" hidden>No encontramos bebidas con esa búsqueda. Prueba con otro nombre o ingrediente.</p>
           </div>
-        </details>
-        <details class="cocktail-panel">
-          <summary><span class="cocktail-number">03</span><span><strong>Creaciones de la casa</strong><small>Combinaciones especiales para descubrir nuevos sabores.</small></span></summary>
-          <div class="cocktail-grid">
-            <article class="cocktail-card"><h3>Salvaje tropical</h3><p>Una propuesta frutal de la casa. Completa aquí la receta oficial.</p></article>
-            <article class="cocktail-card"><h3>Maracuyá sour</h3><p>Una versión cítrica y aromática con maracuyá. Confirma la receta de la barra.</p></article>
-            <article class="cocktail-card"><h3>Especial de temporada</h3><p>Espacio para destacar una mezcla temporal o una recomendación del bartender.</p></article>
+
+          <div class="cocktail-categories" id="drink-categories">
+            <details class="cocktail-panel">
+              <summary><span class="cocktail-number">01</span><span><strong>Cócteles clásicos</strong><small>Recetas tradicionales para disfrutar sin apuro.</small></span></summary>
+              <div class="cocktail-grid">
+                <article class="cocktail-card"><h3>Pisco Sour</h3><p>Pisco, limón, jarabe de goma, clara de huevo y unas gotas de amargo de angostura.</p></article>
+                <article class="cocktail-card"><h3>Mojito</h3><p>Ron, hierbabuena, limón, azúcar y soda, servido bien frío.</p></article>
+                <article class="cocktail-card"><h3>Margarita</h3><p>Tequila, licor de naranja y limón, con borde de sal.</p></article>
+                <article class="cocktail-card"><h3>Cuba Libre</h3><p>Ron, bebida de cola y limón.</p></article>
+              </div>
+            </details>
+            <details class="cocktail-panel">
+              <summary><span class="cocktail-number">02</span><span><strong>Cócteles vírgenes</strong><small>Alternativas sin alcohol, frescas y frutales.</small></span></summary>
+              <div class="cocktail-grid">
+                <article class="cocktail-card"><h3>Mojito virgen</h3><p>Hierbabuena, limón, azúcar y soda.</p></article>
+                <article class="cocktail-card"><h3>San Francisco</h3><p>Mezcla frutal de naranja, piña, limón y granadina.</p></article>
+                <article class="cocktail-card"><h3>Piña colada virgen</h3><p>Piña y crema de coco, con textura cremosa.</p></article>
+                <article class="cocktail-card"><h3>Limonada de hierbabuena</h3><p>Limón, hierbabuena y hielo.</p></article>
+              </div>
+            </details>
+            <details class="cocktail-panel">
+              <summary><span class="cocktail-number">03</span><span><strong>Creaciones de la casa</strong><small>Combinaciones especiales para descubrir nuevos sabores.</small></span></summary>
+              <div class="cocktail-grid">
+                <article class="cocktail-card"><h3>Salvaje tropical</h3><p>Una propuesta frutal de la casa. Completa aquí la receta oficial.</p></article>
+                <article class="cocktail-card"><h3>Maracuyá sour</h3><p>Una versión cítrica y aromática con maracuyá. Confirma la receta de la barra.</p></article>
+                <article class="cocktail-card"><h3>Especial de temporada</h3><p>Espacio para destacar una mezcla temporal o una recomendación del bartender.</p></article>
+              </div>
+            </details>
           </div>
-        </details>
-      </div>
-      <p class="cocktail-note">Los nombres y recetas de ejemplo deben revisarse con la carta oficial antes de publicar. Los precios pueden añadirse debajo de cada cóctel cuando estén confirmados.</p>
+          <p class="cocktail-note">Los nombres y recetas de ejemplo deben revisarse con la carta oficial antes de publicar. Los precios pueden añadirse debajo de cada bebida cuando estén confirmados.</p>
         </div>
       </details>
     </section>
@@ -432,7 +469,7 @@
         <h2>Explora</h2>
         <a href="#nosotros">Nosotros</a>
         <a href="#menu">Nuestra carta</a>
-        <a href="#cocteles">Cócteles</a>
+        <a href="#cocteles">Bebidas y cócteles</a>
         <a href="#novedades">Promociones y eventos</a>
         <a href="#galeria">Galería</a>
       </div>
@@ -456,5 +493,6 @@
   </footer>
   <script src="./js/reservas.js" defer></script>
   <script src="./js/carta.js" defer></script>
+  <script src="./js/bebidas.js" defer></script>
 </body>
 </html>
