@@ -132,6 +132,60 @@
           <p>Explora nuestras especialidades, consulta los precios y elige tu plato favorito.</p>
         </div>
 
+        <section class="menu-tools" id="menu-tools" aria-label="Herramientas para explorar la carta">
+          <div class="menu-tools-heading">
+            <div>
+              <p class="menu-tools-eyebrow">ENCUENTRA TU FAVORITO</p>
+              <h3>¿Qué se te antoja hoy?</h3>
+              <p>Busca por nombre o explora nuestras especialidades por categoría.</p>
+            </div>
+            <span class="menu-tools-decoration" aria-hidden="true">✦</span>
+          </div>
+
+          <label class="menu-search-label" for="menu-search">
+            <span class="menu-search-caption">Buscar en nuestra carta</span>
+            <span class="menu-search-field">
+              <svg class="menu-search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                <path d="m16 16 5 5"></path>
+              </svg>
+              <input
+                class="menu-search-input"
+                id="menu-search"
+                type="search"
+                placeholder="Ej.: lomo saltado, parrilla, ensalada..."
+                autocomplete="off"
+                aria-describedby="menu-results"
+              >
+              <button class="menu-search-clear" id="menu-search-clear" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+            </span>
+          </label>
+
+          <div class="menu-filter-area">
+            <div class="menu-filter-heading">
+              <span class="menu-filter-title">Explora por categoría</span>
+              <span class="menu-filter-hint">Selecciona una opción</span>
+            </div>
+            <div class="menu-filter-list" id="menu-filters" aria-label="Categorías de la carta">
+              <button class="menu-filter-button is-active" type="button" data-category="all" aria-pressed="true">Todas</button>
+            </div>
+          </div>
+
+          <div class="menu-tools-footer">
+            <p class="menu-results" id="menu-results" role="status" aria-live="polite">
+              Explora todos nuestros platos o selecciona una categoría.
+            </p>
+            <span class="menu-footer-note"><span aria-hidden="true">✧</span> Sabores para disfrutar</span>
+          </div>
+
+          <div class="menu-empty-state" id="menu-empty" hidden>
+            <span class="menu-empty-icon" aria-hidden="true">⌕</span>
+            <strong>No encontramos coincidencias</strong>
+            <p>Prueba con otro nombre o cambia la categoría seleccionada.</p>
+            <button class="menu-reset-button" id="menu-reset" type="button">Mostrar toda la carta</button>
+          </div>
+        </section>
+
         <div class="static-menu-categories">
           <details class="menu-category-panel">
             <summary>Pastas <span>Spaghetti · Fetuccini</span></summary>
@@ -401,5 +455,6 @@
     </div>
   </footer>
   <script src="./js/reservas.js" defer></script>
+  <script src="./js/carta.js" defer></script>
 </body>
 </html>
