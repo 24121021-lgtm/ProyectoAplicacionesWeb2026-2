@@ -36,18 +36,18 @@ if (
   contenedorCarta && campoBusquedaCarta && contenedorFiltrosCarta &&
   textoResultadosCarta && mensajeSinResultados
 ) {
-  const categoriasCarta = Array.from(
-    contenedorCarta.querySelectorAll(":scope > .menu-category-panel")
-  );
+  const categoriasCarta = [
+  ...contenedorCarta.querySelectorAll(":scope > .menu-category-panel")
+  ];
 
   let categoriaSeleccionada = "all";
 
   // Cada plato queda asociado a su categoría para poder filtrarlo.
   const elementosCarta = categoriasCarta.flatMap((panel, indiceCategoria) => {
     const nombreCategoria = obtenerNombreCategoria(panel);
-    const tarjetas = Array.from(
-      panel.querySelectorAll(".static-product, .sauce-card")
-    );
+    const tarjetas = [
+     ...panel.querySelectorAll(".static-product, .sauce-card")
+    ];
 
     return tarjetas.map((tarjeta) => {
       const tipoPasta = tarjeta.closest(".pasta-type");
@@ -66,6 +66,15 @@ if (
       };
     });
   });
+
+  // Calcula la cantidad de productos que tiene cada categoría.
+const cantidadesPorCategoria = elementosCarta.reduce(
+  (conteo, { indiceCategoria }) => {
+    conteo[indiceCategoria] = (conteo[indiceCategoria] ?? 0) + 1;
+    return conteo;
+  },
+  {}
+);
 
   // Crea botones visuales con el nombre y la cantidad de opciones por categoría.
   function crearBotonCategoria(nombre, identificador, cantidad) {
@@ -98,9 +107,7 @@ if (
 
     categoriasCarta.forEach((panel, indice) => {
       const nombre = obtenerNombreCategoria(panel);
-      const cantidad = elementosCarta.filter(
-        (item) => item.indiceCategoria === String(indice)
-      ).length;
+      const cantidad = cantidadesPorCategoria[indice] ?? 0;
       contenedorFiltrosCarta.appendChild(
         crearBotonCategoria(nombre, String(indice), cantidad)
       );
@@ -140,15 +147,15 @@ if (
         categoriaSeleccionada === "all" || categoriaSeleccionada === String(indice);
 
       const elementosDeCategoria = elementosCarta.filter(
-        (item) => item.indiceCategoria === String(indice)
+        ({ indiceCategoria }) => indiceCategoria === String(indice)
       );
 
       let coincidenciasCategoria = 0;
 
-      elementosDeCategoria.forEach((item) => {
-        const coincideTexto = !busqueda || item.texto.includes(busqueda);
+      elementosDeCategoria.forEach(({ elemento, texto }) => {
+        const coincideTexto = !busqueda || texto.includes(busqueda);
         const visible = categoriaCoincide && coincideTexto;
-        item.elemento.hidden = !visible;
+        elemento.hidden = !visible;
 
         if (visible) {
           coincidenciasCategoria += 1;
