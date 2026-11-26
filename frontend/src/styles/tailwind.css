@@ -1,0 +1,13 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-salvaje-oscuro: #172a20;
+  --color-salvaje-verde: #20392c;
+  --color-salvaje-dorado: #c89d45;
+  --color-salvaje-dorado-claro: #e2bd70;
+  --color-salvaje-crema: #f4eee3;
+  --color-salvaje-marron: #76543b;
+}
