@@ -2,6 +2,7 @@ import Hero from './components/Hero'
 import Bienvenida from './components/Bienvenida'
 import Nosotros from './components/Nosotros'
 import Experiencia from './components/Experiencia'
+import CartaDigital from './components/CartaDigital'
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
         <Nosotros />
 
         <Experiencia />
+
+        <CartaDigital />
 
       </main>
 
