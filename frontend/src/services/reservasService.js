@@ -1,33 +1,7 @@
-import { ESTADOS_RESERVA } from '../data/reglasReserva'
+import { validarReserva } from '../utils/validarReserva'
 
-import {
-  calcularAdelanto,
-  validarReserva
-} from '../utils/validarReserva'
-
-const STORAGE_KEY = 'salvaje_reservas_demo'
-
-// Consultar todas las reservas simuladas
-
-export async function obtenerReservas() {
-
-  const datos = localStorage.getItem(STORAGE_KEY)
-
-  if (!datos) {
-    return []
-  }
-
-  const reservas = JSON.parse(datos)
-
-  if (!Array.isArray(reservas)) {
-    throw new Error('El almacenamiento de reservas no es válido')
-  }
-
-  return reservas
-
-}
-
-// Registrar una nueva reserva
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+  ?.replace(/\/+$/, '')
 
 export async function crearReserva(datos) {
 
@@ -41,48 +15,37 @@ export async function crearReserva(datos) {
 
   }
 
-  const reservas = await obtenerReservas()
+  if (!BACKEND_URL) {
 
-  const nuevaReserva = {
-
-    id_reserva: crypto.randomUUID(),
-
-    nombre_cliente: datos.nombre_cliente.trim(),
-
-    telefono: datos.telefono.trim(),
-
-    tipo_reserva: datos.tipo_reserva,
-
-    fecha: datos.fecha,
-
-    hora: datos.hora,
-
-    cantidad_personas: Number(datos.cantidad_personas),
-
-    consumo_estimado: Number(datos.consumo_estimado),
-
-    adelanto: calcularAdelanto(datos.cantidad_personas),
-
-    estado: ESTADOS_RESERVA.PENDIENTE,
-
-    fecha_registro: new Date().toISOString(),
-
-    fecha_respuesta: null,
-
-    motivo_rechazo: null
+    throw new Error(
+      'La URL del backend no está configurada'
+    )
 
   }
 
-  const reservasActualizadas = [
-    ...reservas,
-    nuevaReserva
-  ]
+  const respuesta = await fetch(
+    `${BACKEND_URL}/reservas`,
+    {
+      method: 'POST',
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(reservasActualizadas)
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify(datos)
+    }
   )
 
-  return nuevaReserva
+  const resultado = await respuesta.json()
+
+  if (!respuesta.ok) {
+
+    throw new Error(
+      resultado.mensaje || 'No se pudo registrar la reserva'
+    )
+
+  }
+
+  return resultado
 
 }
