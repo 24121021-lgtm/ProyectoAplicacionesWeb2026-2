@@ -1,3 +1,4 @@
+
 import {
 
   listarReservas,
@@ -5,6 +6,10 @@ import {
   cambiarEstado
 
 } from '../services/reservas.service.js'
+
+import {
+  notificarCambioReserva
+} from '../services/whatsapp.service.js'
 
 // GET - Consultar reservas
 
@@ -24,7 +29,7 @@ export function obtenerReservas(req, res, next) {
 
 }
 
-// POST - Registrar una reserva
+// POST - Registrar reserva
 
 export function registrarReserva(req, res, next) {
 
@@ -60,6 +65,24 @@ export function actualizarReserva(req, res, next) {
       estado,
       motivo_rechazo
     )
+
+    console.log('CAMBIO DE RESERVA:', reserva.estado)
+    console.log('EJECUTANDO NOTIFICACIÓN WHATSAPP...')
+    
+    // Notificar cambio de estado
+
+    try {
+
+      notificarCambioReserva(reserva)
+
+    } catch (error) {
+
+      console.error(
+        'Error en notificación WhatsApp:',
+        error.message
+      )
+
+    }
 
     res.json(reserva)
 
