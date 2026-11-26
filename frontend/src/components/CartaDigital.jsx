@@ -2,17 +2,30 @@ import { useEffect, useState } from 'react'
 
 import Carta from './Carta'
 import Bebidas from './Bebidas'
+import FiltrosCarta from './FiltrosCarta'
+import ResultadosCarta from './ResultadosCarta'
 
 import { obtenerCategorias } from '../services/categoriasService'
 import { obtenerProductos } from '../services/productosService'
 
+import { filtrarCarta } from '../utils/filtrarCarta'
+
 function CartaDigital() {
+
+  // Estados de la API
 
   const [categorias, setCategorias] = useState([])
   const [productos, setProductos] = useState([])
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
   const [reintento, setReintento] = useState(0)
+
+  // Estados de los filtros
+
+  const [busqueda, setBusqueda] = useState('')
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('')
+
+  // Consultar MockAPI
 
   useEffect(() => {
 
@@ -35,8 +48,25 @@ function CartaDigital() {
         }
 
         if (activo) {
-          setCategorias(datosCategorias)
+
+          const categoriasNormalizadas = datosCategorias.map(
+            categoria => ({
+
+              ...categoria,
+
+              id_categoria_padre:
+                categoria.id_categoria_padre == null ||
+                categoria.id_categoria_padre === '' ||
+                Number(categoria.id_categoria_padre) === 0
+                  ? null
+                  : categoria.id_categoria_padre
+
+            })
+          )
+
+          setCategorias(categoriasNormalizadas)
           setProductos(datosProductos)
+
         }
 
       } catch (error) {
@@ -63,11 +93,46 @@ function CartaDigital() {
 
   }, [reintento])
 
+  // Reintentar consulta a la API
+
   function reintentarCarga() {
+
     setError(null)
     setCargando(true)
     setReintento(anterior => anterior + 1)
+
   }
+
+  // Limpiar los filtros
+
+  function limpiarFiltros() {
+
+    setBusqueda('')
+    setCategoriaSeleccionada('')
+
+  }
+
+  // Obtener todos los productos publicados
+
+  const productosActivos = filtrarCarta(
+    categorias,
+    productos
+  )
+
+  // Obtener los productos que coinciden con los filtros
+
+  const productosFiltrados = filtrarCarta(
+    categorias,
+    productos,
+    busqueda,
+    categoriaSeleccionada
+  )
+
+  const hayFiltros =
+    busqueda.trim() !== '' ||
+    categoriaSeleccionada !== ''
+
+  // Estado de carga
 
   if (cargando) {
 
@@ -78,6 +143,8 @@ function CartaDigital() {
         className="bg-salvaje-oscuro py-16 text-center text-salvaje-crema"
         role="status"
       >
+
+        <span id="cocteles"></span>
 
         <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-solid border-salvaje-dorado border-t-transparent">
         </div>
@@ -90,6 +157,8 @@ function CartaDigital() {
 
   }
 
+  // Estado de error
+
   if (error) {
 
     return (
@@ -98,6 +167,8 @@ function CartaDigital() {
         id="menu"
         className="bg-salvaje-oscuro px-6 py-16 text-center text-salvaje-crema"
       >
+
+        <span id="cocteles"></span>
 
         <div role="alert">
 
@@ -123,23 +194,53 @@ function CartaDigital() {
 
   }
 
+  // Mostrar la carta digital
+
   return (
 
     <>
 
-      <Carta
+      <FiltrosCarta
         categorias={categorias}
-        productos={productos}
+        busqueda={busqueda}
+        setBusqueda={setBusqueda}
+        categoriaSeleccionada={categoriaSeleccionada}
+        setCategoriaSeleccionada={setCategoriaSeleccionada}
+        cantidadResultados={productosFiltrados.length}
+        cantidadTotal={productosActivos.length}
+        limpiarFiltros={limpiarFiltros}
       />
 
-      <Bebidas
-        categorias={categorias}
-        productos={productos}
-      />
+      {hayFiltros ? (
+
+        <ResultadosCarta
+          categorias={categorias}
+          productos={productosFiltrados}
+          limpiarFiltros={limpiarFiltros}
+        />
+
+      ) : (
+
+        <>
+
+          <Carta
+            categorias={categorias}
+            productos={productosActivos}
+          />
+
+          <Bebidas
+            categorias={categorias}
+            productos={productosActivos}
+          />
+
+        </>
+
+      )}
 
     </>
 
   )
+
 }
 
 export default CartaDigital
