@@ -66,9 +66,6 @@ export function actualizarReserva(req, res, next) {
       motivo_rechazo
     )
 
-    console.log('CAMBIO DE RESERVA:', reserva.estado)
-    console.log('EJECUTANDO NOTIFICACIÓN WHATSAPP...')
-    
     // Notificar cambio de estado
 
     try {
