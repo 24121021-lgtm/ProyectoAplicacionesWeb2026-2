@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-salvaje-oscuro: #172a20;
+  --color-salvaje-verde: #20392c;
+  --color-salvaje-dorado: #c89d45;
+  --color-salvaje-crema: #f4eee3;
+  --color-salvaje-marron: #76543b;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4eee3;
+  color: #172a20;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
