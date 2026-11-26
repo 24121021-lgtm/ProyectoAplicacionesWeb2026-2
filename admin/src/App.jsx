@@ -2,22 +2,31 @@ import { useState } from 'react'
 
 import Login from './components/Login'
 import ReservaCard from './components/ReservaCard'
+import Notificaciones from './components/Notificaciones'
 
-import {
-  iniciarSesion,
-  cerrarSesion,
-  obtenerReservas,
-  actualizarEstado
-} from './services/api'
+import { useReservas } from './hooks/useReservas'
 
 function App() {
 
-  const [token, setToken] = useState('')
-  const [reservas, setReservas] = useState([])
+  const {
+
+    token,
+    reservas,
+    avisos,
+    cargando,
+    error,
+    mensaje,
+    conexion,
+
+    manejarLogin,
+    manejarLogout,
+    cargarReservas,
+    manejarDecision,
+    marcarLeidas
+
+  } = useReservas()
+
   const [filtro, setFiltro] = useState('PENDIENTE')
-  const [cargando, setCargando] = useState(false)
-  const [error, setError] = useState('')
-  const [mensaje, setMensaje] = useState('')
 
   // Contadores
 
@@ -33,7 +42,7 @@ function App() {
     reserva => reserva.estado === 'RECHAZADA'
   ).length
 
-  // Filtros
+  // Filtrar reservas
 
   const reservasFiltradas = reservas.filter(
     reserva =>
@@ -41,163 +50,17 @@ function App() {
       reserva.estado === filtro
   )
 
-  // Iniciar sesión
-
-  async function manejarLogin(usuario, password) {
-
-    setCargando(true)
-    setError('')
-    setMensaje('')
-
-    try {
-
-      const sesion = await iniciarSesion(
-        usuario,
-        password
-      )
-
-      const datos = await obtenerReservas(sesion.token)
-
-      setToken(sesion.token)
-      setReservas(datos)
-
-    } catch (error) {
-
-      setError(error.message)
-
-    } finally {
-
-      setCargando(false)
-
-    }
-
-  }
-
-  // Manejar errores del administrador
-
-  function manejarError(error) {
-
-    setError(error.message)
-
-    if (error.status === 401) {
-
-      setToken('')
-      setReservas([])
-
-    }
-
-  }
-
-  // Actualizar listado de reservas
-
-  async function cargarReservas() {
-
-    setCargando(true)
-    setError('')
-    setMensaje('')
-
-    try {
-
-      const datos = await obtenerReservas(token)
-
-      setReservas(datos)
-
-    } catch (error) {
-
-      manejarError(error)
-
-    } finally {
-
-      setCargando(false)
-
-    }
-
-  }
-
-  // Confirmar o rechazar una solicitud
-
-  async function manejarDecision(id, estado, motivo) {
-
-    setCargando(true)
-    setError('')
-    setMensaje('')
-
-    try {
-
-      const actualizada = await actualizarEstado(
-        id,
-        estado,
-        motivo,
-        token
-      )
-
-      setReservas(anteriores =>
-        anteriores.map(reserva =>
-          reserva.id_reserva === id
-            ? actualizada
-            : reserva
-        )
-      )
-
-      setMensaje(
-        estado === 'CONFIRMADA'
-          ? 'Reserva confirmada correctamente'
-          : 'Reserva rechazada correctamente'
-      )
-
-      return true
-
-    } catch (error) {
-
-      manejarError(error)
-
-      return false
-
-    } finally {
-
-      setCargando(false)
-
-    }
-
-  }
-
-  // Cerrar sesión
-
-  async function manejarLogout() {
-
-    setCargando(true)
-
-    let aviso = ''
-
-    try {
-
-      await cerrarSesion(token)
-
-    } catch {
-
-      aviso = 'Sesión local cerrada. No se pudo contactar al servidor.'
-
-    } finally {
-
-      setToken('')
-      setReservas([])
-      setFiltro('PENDIENTE')
-      setError(aviso)
-      setMensaje('')
-      setCargando(false)
-
-    }
-
-  }
-
-  // Mostrar el inicio de sesión
+  // Inicio de sesión
 
   if (!token) {
 
     return (
 
       <Login
-        onLogin={manejarLogin}
+        onLogin={(usuario, password) => {
+          setFiltro('PENDIENTE')
+          return manejarLogin(usuario, password)
+        }}
         cargando={cargando}
         error={error}
       />
@@ -231,11 +94,11 @@ function App() {
 
   ]
 
-  // Panel administrativo
-
   return (
 
     <div className="min-h-screen bg-salvaje-crema">
+
+      {/* Encabezado */}
 
       <header className="bg-salvaje-oscuro px-5 py-5 text-white">
 
@@ -253,20 +116,33 @@ function App() {
 
           </div>
 
-          <button
-            type="button"
-            onClick={manejarLogout}
-            disabled={cargando}
-            className="rounded-lg border border-salvaje-dorado px-4 py-2 text-sm font-semibold text-salvaje-dorado hover:bg-salvaje-verde disabled:opacity-50"
-          >
-            Cerrar sesión
-          </button>
+          <div className="flex items-center gap-5">
+
+            <Notificaciones
+              cantidad={avisos.length}
+              marcarLeidas={marcarLeidas}
+            />
+
+            <button
+              type="button"
+              onClick={manejarLogout}
+              disabled={cargando}
+              className="rounded-lg border border-salvaje-dorado px-4 py-2 text-sm font-semibold text-salvaje-dorado hover:bg-salvaje-verde disabled:opacity-50"
+            >
+
+              Cerrar sesión
+
+            </button>
+
+          </div>
 
         </div>
 
       </header>
 
       <main className="mx-auto max-w-7xl px-5 py-8">
+
+        {/* Título */}
 
         <div className="mb-8">
 
@@ -282,9 +158,50 @@ function App() {
             Consulta, confirma o rechaza las solicitudes recibidas.
           </p>
 
+          {/* Estado de conexión */}
+
+          <div className="mt-4 flex items-center gap-2">
+
+            <span
+              className={`h-3 w-3 rounded-full ${
+                conexion
+                  ? 'animate-pulse bg-green-500'
+                  : 'bg-red-500'
+              }`}
+            />
+
+            <span className={`text-sm ${
+              conexion ? 'text-green-700' : 'text-red-700'
+            }`}>
+
+              {conexion
+                ? 'Actualización automática activa'
+                : 'Sin conexión con el servidor'}
+
+            </span>
+
+          </div>
+
         </div>
 
-        {/* Tarjetas de estadísticas */}
+        {/* Advertencia de conexión */}
+
+        {!conexion && (
+
+          <div
+            role="alert"
+            className="mb-6 rounded-lg border border-yellow-300 bg-yellow-100 p-4 text-sm text-yellow-800"
+          >
+
+            No se pudo actualizar el listado.
+            Se intentará recuperar la conexión automáticamente.
+            Los datos mostrados podrían estar desactualizados.
+
+          </div>
+
+        )}
+
+        {/* Estadísticas */}
 
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
 
@@ -315,7 +232,35 @@ function App() {
 
         </div>
 
-        {/* Filtros y actualización */}
+        {/* Aviso de nuevas solicitudes */}
+
+        {avisos.length > 0 && (
+
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-yellow-300 bg-yellow-50 p-4">
+
+            <p className="font-semibold text-yellow-800">
+
+              {avisos.length === 1
+                ? 'Tienes una nueva solicitud de reserva.'
+                : `Tienes ${avisos.length} nuevas solicitudes de reserva.`}
+
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setFiltro('PENDIENTE')}
+              className="rounded-lg bg-salvaje-dorado px-4 py-2 text-sm font-semibold text-salvaje-oscuro"
+            >
+
+              Ver solicitudes
+
+            </button>
+
+          </div>
+
+        )}
+
+        {/* Filtros */}
 
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
 
@@ -338,7 +283,9 @@ function App() {
                     : 'bg-white text-salvaje-verde'
                 }`}
               >
+
                 {etiqueta}
+
               </button>
 
             ))}
@@ -368,7 +315,9 @@ function App() {
             role="alert"
             className="mb-5 rounded-lg bg-red-100 p-4 text-red-800"
           >
+
             {error}
+
           </p>
 
         )}
@@ -379,12 +328,14 @@ function App() {
             role="status"
             className="mb-5 rounded-lg bg-green-100 p-4 text-green-800"
           >
+
             {mensaje}
+
           </p>
 
         )}
 
-        {/* Listado de reservas */}
+        {/* Listado */}
 
         <p className="mb-4 text-sm text-gray-600">
 
@@ -401,23 +352,43 @@ function App() {
             </h2>
 
             <p className="mt-2 text-sm text-gray-500">
-              Actualiza el listado o selecciona otro filtro.
+              Las nuevas solicitudes aparecerán automáticamente.
             </p>
 
           </div>
 
         ) : (
 
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
 
             {reservasFiltradas.map(reserva => (
 
-              <ReservaCard
+              <div
                 key={reserva.id_reserva}
-                reserva={reserva}
-                onDecision={manejarDecision}
-                procesando={cargando}
-              />
+                className={
+                  avisos.includes(reserva.id_reserva)
+                    ? 'rounded-xl ring-2 ring-salvaje-dorado'
+                    : ''
+                }
+              >
+
+                {avisos.includes(reserva.id_reserva) && (
+
+                  <div className="rounded-t-xl bg-salvaje-dorado px-4 py-2 text-xs font-bold text-salvaje-oscuro">
+
+                    NUEVA SOLICITUD
+
+                  </div>
+
+                )}
+
+                <ReservaCard
+                  reserva={reserva}
+                  onDecision={manejarDecision}
+                  procesando={cargando || !conexion}
+                />
+
+              </div>
 
             ))}
 
@@ -436,6 +407,7 @@ function App() {
     </div>
 
   )
+
 }
 
 export default App
